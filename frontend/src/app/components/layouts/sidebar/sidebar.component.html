@@ -2,8 +2,8 @@
 <div class="sidemenu-area">
     <div class="sidemenu-header">
         <a href="/dashboard/analytics" class="navbar-brand d-flex align-items-center">
-            <img src="assets/img/small-logo.png" alt="image">
-            <span>Fiva</span>
+            <img class="brand-image" src="assets/img/encomienda.png" alt="image">
+            <span>Encomienda</span>
         </a>
 
         <div class="burger-menu d-none d-lg-block">
@@ -48,7 +48,35 @@
                     </li>
                 </ul>
             </li>
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bxs-package'></i></span>
+                    <span class="menu-title">Encomienda</span>
+                    <span class="badge">2</span>
+                </a>
 
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/encomienda" class="nav-link">
+                            <span class="icon"><i class='fa fa-truck-fast'></i></span>
+                            <span class="menu-title">Enviar encomienda</span>
+                        </a>
+                    </li>
+
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/dashboard/e-commerce" class="nav-link">
+                            <span class="icon"><i class='fa fa-map-location-dot'></i></span>
+                            <span class="menu-title">Estado de encomienda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/dashboard/e-commerce" class="nav-link">
+                            <span class="icon"><i class='fa fa-tag'></i></span>
+                            <span class="menu-title">Tarifario</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
             <li class="nav-item-title">
                 Apps
             </li>

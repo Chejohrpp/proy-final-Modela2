@@ -148,6 +148,7 @@ import { BasicPieChartComponent } from './components/charts/basic-pie-chart/basi
 import { BasicRadarChartv2Component } from './components/charts/basic-radar-chartv2/basic-radar-chartv2.component';
 import { BasicHorizontalBarComponent } from './components/charts/basic-horizontal-bar/basic-horizontal-bar.component';
 import { BarWithLineComponent } from './components/charts/bar-with-line/bar-with-line.component';
+import { EncomiendaComponent } from './components/pages/encomienda/encomienda.component';
 
 @NgModule({
   declarations: [
@@ -297,6 +298,7 @@ import { BarWithLineComponent } from './components/charts/bar-with-line/bar-with
     BasicRadarChartv2Component,
     BasicHorizontalBarComponent,
     BarWithLineComponent,
+    EncomiendaComponent,
   ],
   imports: [
     BrowserModule,

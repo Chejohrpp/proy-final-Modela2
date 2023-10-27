@@ -86,6 +86,7 @@ import { Errorv4Component } from './components/pages/error/errorv4/errorv4.compo
 import { MapsComponent } from './components/pages/maps/maps.component';
 import { ApexChartsComponent } from './components/pages/apex-charts/apex-charts.component';
 import { ChartjsComponent } from './components/pages/chartjs/chartjs.component';
+import { EncomiendaComponent } from './components/pages/encomienda/encomienda.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -104,6 +105,7 @@ const routes: Routes = [
       {path: 'compose', data: { breadcrumb: 'Email Compose' }, component: ComposeComponent},
     ]
   },
+  {path: 'encomienda', component: EncomiendaComponent},
   {path: 'app-chat', component: AppChatComponent},
   {path: 'app-todo', component: AppTodoComponent},
   {path: 'app-calendar', component: AppCalendarComponent},
