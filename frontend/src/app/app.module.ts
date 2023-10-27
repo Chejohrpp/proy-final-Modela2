@@ -149,6 +149,10 @@ import { BasicRadarChartv2Component } from './components/charts/basic-radar-char
 import { BasicHorizontalBarComponent } from './components/charts/basic-horizontal-bar/basic-horizontal-bar.component';
 import { BarWithLineComponent } from './components/charts/bar-with-line/bar-with-line.component';
 import { EncomiendaComponent } from './components/pages/encomienda/encomienda.component';
+import { StatusEncomiendaComponent } from './components/pages/encomienda/status-encomienda/status-encomienda.component';
+import { SendEncomiendaComponent } from './components/pages/encomienda/send-encomienda/send-encomienda.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PriceEncomiendaComponent } from './components/pages/encomienda/price-encomienda/price-encomienda.component';
 
 @NgModule({
   declarations: [
@@ -299,10 +303,15 @@ import { EncomiendaComponent } from './components/pages/encomienda/encomienda.co
     BasicHorizontalBarComponent,
     BarWithLineComponent,
     EncomiendaComponent,
+    StatusEncomiendaComponent,
+    SendEncomiendaComponent,
+    PriceEncomiendaComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

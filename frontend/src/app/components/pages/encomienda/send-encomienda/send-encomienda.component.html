@@ -1,0 +1,178 @@
+<div class="breadcrumb-area">
+	<h1>Envio de encomienda</h1>
+</div>
+<div class="card">
+	<div class="card-header">
+		<h3>Datos de la encomienda</h3>
+	</div>
+	<div class="card-body">
+		<span class="title-hr">
+			<hr />Datos Generales
+			<hr />
+		</span>
+		<div class="row mt-3 mb-3">
+			<div class="col-sm">
+				<div class="input-group">
+					<label for="client" class="input-group-text">Cliente</label>
+					<input type="text" id="client" name="client" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="input-group">
+					<label for="receiver" class="input-group-text">Receptor</label>
+					<input type="text" id="receiver" name="receiver" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="input-group">
+					<label for="priority" class="input-group-text">Prioridad</label>
+					<select name="priority" id="priority" class="form-select">
+						<option value="0">Por tiempo</option>
+						<option value="1">Por distancia</option>
+					</select>
+				</div>
+			</div>
+		</div>
+		<div class="row mt-3 mb-3">
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Datos Paquete
+					<hr />
+				</span>
+				<div class="input-group mt-3">
+					<label for="weight" class="input-group-text">Peso</label>
+					<input type="number" id="weight" name="weight" class="form-control">
+				</div>
+				<div class="relative">
+					<img src="../../../../assets/img/cube.png" alt="">
+					<div class="relative-element width">
+						<div class="dashed"></div>
+						<input type="number" id="x-axis" name="x-axis" class="form-control axis">
+						<div class="dashed"></div>
+					</div>
+					<div class="relative-element deep">
+						<div class="dashed"></div>
+						<input type="number" id="z-axis" name="z-axis" class="form-control axis">
+						<div class="dashed"></div>
+					</div>
+					<div class="relative-element heigth">
+						<div class="dashed"></div>
+						<input type="number" id="y-axis" name="y-axis" class="form-control axis">
+						<div class="dashed"></div>
+					</div>
+				</div>
+				<span><b>Nota:</b> Ingresa las medidas en centimetros</span>
+			</div>
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Datos Destino
+					<hr />
+				</span>
+				<div class="input-group mt-3 mb-3">
+					<label for="branch-destiny" class="input-group-text">Destino</label>
+					<select name="branch-destiny" id="branch-destiny" class="form-select"></select>
+				</div>
+				<div id="map-container">
+
+				</div>
+			</div>
+			<button class="btn btn-primary mt-3">
+				<i class="fa fa-calculator"></i>
+				CALCULAR COSTO
+			</button>
+		</div>
+	</div>
+</div>
+<div class="card mt-3">
+	<div class="card-header">
+		<h3>Resultado del calculo del costo de la encomienda</h3>
+	</div>
+	<div class="card-body">
+		<span class="title-hr">
+			<hr />Datos Calculados
+			<hr />
+		</span>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="approximate-time" class="form-text">Tiempo aproximado</label>
+					<input type="text" disabled id="approximate-time" name="approximate-time" class="form-control">
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="approximate-distance" class="form-text">Distancia aproximada</label>
+					<input type="text" disabled id="approximate-distance" name="approximate-distance"
+						class="form-control">
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="approximate-cost" class="form-text">Costo aproximado</label>
+					<input type="text" disabled id="approximate-cost" name="approximate-cost" class="form-control">
+				</div>
+			</div>
+		</div>
+		<span class="title-hr mt-3 mb-3">
+			<hr />Ruta a seguir
+			<hr />
+		</span>
+		<div class="route" style="padding: 1em;">
+			<div class="branch">
+				<span class="branch-name passed">Sucursal 1</span>
+				<div class="branch-representation passed"><i class="fa fa-warehouse"></i></div>
+			</div>
+			<div class="connector">
+				<div class="line-connector passed"></div>
+				<span class="text-connector passed">4km <br> 4dias</span>
+				<div class="line-connector passed"></div>
+			</div>
+			<div class="branch">
+				<span class="branch-name active">Sucursal 2</span>
+				<div class="branch-representation active"><i class="fa fa-warehouse"></i></div>
+			</div>
+			<div class="connector">
+				<div class="line-connector"></div>
+				<span class="text-connector">4km <br> 4dias</span>
+				<div class="line-connector"></div>
+			</div>
+			<div class="branch">
+				<span class="branch-name">Sucursal 3</span>
+				<div class="branch-representation"><i class="fa fa-warehouse"></i></div>
+			</div>
+			<div class="connector">
+				<div class="line-connector"></div>
+				<span class="text-connector">4km <br> 4dias</span>
+				<div class="line-connector"></div>
+			</div>
+			<div class="branch">
+				<span class="branch-name">Sucursal 4</span>
+				<div class="branch-representation"><i class="fa fa-warehouse"></i></div>
+			</div>
+		</div>
+		<div class="row">
+			<button class="btn btn-primary mt-3">
+				<i class="fa fa-floppy-disk"></i> GUARDAR
+			</button>
+		</div>
+	</div>
+</div>
+<div class="card mt-3">
+	<div class="card-header">
+		<h3>Detalle de encomienda</h3>
+	</div>
+	<div class="card-body">
+		<span class="text-muted">Para poder hacerle seguimiento a la encomienda, se puede escanear el siguiente QR o código en <a routerLink="/encomienda/status">Estado de encomienda</a></span>
+		<div class="row">
+			<div class="col-sm">
+				<label for="code-encomienda" class="form-text">Código númerico de la encomienda</label>
+				<input type="number" disabled name="code-encomienda" id="code-encomienda" class="form-control">
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="" class="form-text">Código QR</label>
+			<br>
+			<img alt="Código QR" id="codigo">
+		</div>
+	</div>
+</div>
