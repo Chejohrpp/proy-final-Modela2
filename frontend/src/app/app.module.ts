@@ -152,6 +152,10 @@ import { CreateEmployeeEncomiendaComponent } from './components/pages/encomienda
 import { ReportsEncomiendaComponent } from './components/pages/encomienda-gestion/reports-encomienda/reports-encomienda.component';
 import { EncomiendaGestionComponent } from './components/pages/encomienda-gestion/encomienda-gestion/encomienda-gestion.component';
 import { HonorariumTableEncomiendaComponent } from './components/pages/encomienda-gestion/honorarium-table-encomienda/honorarium-table-encomienda.component';
+import { BranchExpensesEncomiendaComponent } from './components/pages/branch-expenses-encomienda/branch-expenses-encomienda.component';
+import { SpecialExpensesEncomiendaComponent } from './components/pages/special-expenses-encomienda/special-expenses-encomienda.component';
+import { MonthlyGoalsEncomiendaComponent } from './components/pages/monthly-goals-encomienda/monthly-goals-encomienda.component';
+import { SurplusEncomiendaComponent } from './components/pages/surplus-encomienda/surplus-encomienda.component';
 
 @NgModule({
   declarations: [
@@ -305,6 +309,10 @@ import { HonorariumTableEncomiendaComponent } from './components/pages/encomiend
     ReportsEncomiendaComponent,
     EncomiendaGestionComponent,
     HonorariumTableEncomiendaComponent,
+    BranchExpensesEncomiendaComponent,
+    SpecialExpensesEncomiendaComponent,
+    MonthlyGoalsEncomiendaComponent,
+    SurplusEncomiendaComponent,
   ],
   imports: [
     BrowserModule,

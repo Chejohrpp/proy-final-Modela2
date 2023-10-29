@@ -90,6 +90,10 @@ import { EncomiendaGestionComponent } from './components/pages/encomienda-gestio
 import { CreateEmployeeEncomiendaComponent } from './components/pages/encomienda-gestion/create-employee-encomienda/create-employee-encomienda.component';
 import { ReportsEncomiendaComponent } from './components/pages/encomienda-gestion/reports-encomienda/reports-encomienda.component';
 import { HonorariumTableEncomiendaComponent } from './components/pages/encomienda-gestion/honorarium-table-encomienda/honorarium-table-encomienda.component';
+import { BranchExpensesEncomiendaComponent } from './components/pages/branch-expenses-encomienda/branch-expenses-encomienda.component';
+import { MonthlyGoalsEncomiendaComponent } from './components/pages/monthly-goals-encomienda/monthly-goals-encomienda.component';
+import { SurplusEncomiendaComponent } from './components/pages/surplus-encomienda/surplus-encomienda.component';
+import { SpecialExpensesEncomiendaComponent } from './components/pages/special-expenses-encomienda/special-expenses-encomienda.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -119,6 +123,10 @@ const routes: Routes = [
       {path: 'honorarium', data: { breadcrumb: 'tabla de honorarios' }, component: HonorariumTableEncomiendaComponent},
     ]
   },
+  {path: 'branch-expenses', component: BranchExpensesEncomiendaComponent},
+  {path: 'special-expenses', component: SpecialExpensesEncomiendaComponent},
+  {path: 'monthly-goals', component: MonthlyGoalsEncomiendaComponent},
+  {path: 'surplus', component: SurplusEncomiendaComponent},
   {path: 'grid', component: GridComponent},
   {path: 'colors', component: ColorsComponent},
   {
