@@ -148,6 +148,10 @@ import { BasicPieChartComponent } from './components/charts/basic-pie-chart/basi
 import { BasicRadarChartv2Component } from './components/charts/basic-radar-chartv2/basic-radar-chartv2.component';
 import { BasicHorizontalBarComponent } from './components/charts/basic-horizontal-bar/basic-horizontal-bar.component';
 import { BarWithLineComponent } from './components/charts/bar-with-line/bar-with-line.component';
+import { CreateEmployeeEncomiendaComponent } from './components/pages/encomienda-gestion/create-employee-encomienda/create-employee-encomienda.component';
+import { ReportsEncomiendaComponent } from './components/pages/encomienda-gestion/reports-encomienda/reports-encomienda.component';
+import { EncomiendaGestionComponent } from './components/pages/encomienda-gestion/encomienda-gestion/encomienda-gestion.component';
+import { HonorariumTableEncomiendaComponent } from './components/pages/encomienda-gestion/honorarium-table-encomienda/honorarium-table-encomienda.component';
 
 @NgModule({
   declarations: [
@@ -297,6 +301,10 @@ import { BarWithLineComponent } from './components/charts/bar-with-line/bar-with
     BasicRadarChartv2Component,
     BasicHorizontalBarComponent,
     BarWithLineComponent,
+    CreateEmployeeEncomiendaComponent,
+    ReportsEncomiendaComponent,
+    EncomiendaGestionComponent,
+    HonorariumTableEncomiendaComponent,
   ],
   imports: [
     BrowserModule,

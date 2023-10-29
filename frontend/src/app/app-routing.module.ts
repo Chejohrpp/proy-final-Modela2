@@ -86,6 +86,10 @@ import { Errorv4Component } from './components/pages/error/errorv4/errorv4.compo
 import { MapsComponent } from './components/pages/maps/maps.component';
 import { ApexChartsComponent } from './components/pages/apex-charts/apex-charts.component';
 import { ChartjsComponent } from './components/pages/chartjs/chartjs.component';
+import { EncomiendaGestionComponent } from './components/pages/encomienda-gestion/encomienda-gestion/encomienda-gestion.component';
+import { CreateEmployeeEncomiendaComponent } from './components/pages/encomienda-gestion/create-employee-encomienda/create-employee-encomienda.component';
+import { ReportsEncomiendaComponent } from './components/pages/encomienda-gestion/reports-encomienda/reports-encomienda.component';
+import { HonorariumTableEncomiendaComponent } from './components/pages/encomienda-gestion/honorarium-table-encomienda/honorarium-table-encomienda.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -107,7 +111,14 @@ const routes: Routes = [
   {path: 'app-chat', component: AppChatComponent},
   {path: 'app-todo', component: AppTodoComponent},
   {path: 'app-calendar', component: AppCalendarComponent},
-
+  {
+    path: 'encomienda-gestion', component: EncomiendaGestionComponent,
+    children: [
+      {path: 'create-employer', data: { breadcrumb: 'Crear empleado' }, component: CreateEmployeeEncomiendaComponent},
+      {path: 'report', data: { breadcrumb: 'Visualizar reportes' }, component: ReportsEncomiendaComponent},
+      {path: 'honorarium', data: { breadcrumb: 'tabla de honorarios' }, component: HonorariumTableEncomiendaComponent},
+    ]
+  },
   {path: 'grid', component: GridComponent},
   {path: 'colors', component: ColorsComponent},
   {

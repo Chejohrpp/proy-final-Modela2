@@ -1,0 +1,73 @@
+<!-- Se pueden crear nuevos empleados, indicando la sucursal, el rol y la cantidad de horas que se laboran. -->
+<!-- Breadcrumb Area -->
+<div class="breadcrumb-area">
+    <h1>Dashboard</h1>
+
+    <ol class="breadcrumb">
+        <li class="item"><a routerLink="/forms/form-layout"><i class='bx bx-home-alt'></i></a></li>
+
+        <li class="item">Dashboard</li>
+
+        <li class="item">Forms</li>
+    </ol>
+</div>
+<!-- End Breadcrumb Area -->
+
+<div class="card mb-4">
+    <div class="card-body">
+        <form >
+            <div class="form-group form-item-create-employer">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <span class="input-group-text">Nombre y Apellido</span>
+                    </div>
+                    <input type="text" class="form-control" id="name" placeholder="Nombre">
+                    <input type="text" class="form-control" id="last_name" placeholder="Apellido">
+                </div>
+            </div>
+            <div class="form-group col-md-7 form-item-create-employer">
+                <label for="email">Email</label>
+                <input type="email" class="form-control" id="email">
+            </div>
+            <div class="form-group col-md-7 form-item-create-employer">
+                <label for="password">Contraseña</label>
+                <input type="password" class="form-control" id="password">
+            </div>
+            <div class="row">
+                <div class="form-group col form-item-create-employer">
+                    <label for="inputState">Rol</label>
+                    <select id="inputState" class="form-control">
+                        <option value="secretaria">Secretaria/o</option>
+                        <option value="bodega">Bodega</option>
+                        <option value="conserje">Conserje</option>
+                        <option value="logistica">Operaciones de Logística</option>
+                        <option value="guardia">Guardia</option>
+                        <option value="piloto">Piloto</option>
+                        <option value="auxiliar-piloto">Auxiliar de Piloto</option>
+                        <option value="gerente">Gerente</option>
+                        <option value="informatica">Informática</option>
+                        <option value="contador">Contador</option>
+                        <option value="otros">Otros</option>
+                    </select>
+                </div>
+                <div class="form-group col form-item-create-employer">
+                    <label for="inputState">sucursal</label>
+                    <select id="inputState" class="form-control">
+                        <option selected>....</option>
+                    </select>
+                </div>
+            </div>
+            <div class="input-group col-md-2 form-item-create-employer">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Q.</span>
+                </div>
+                <input type="number" class="form-control" placeholder="salario base" id="salary">
+            </div>
+            <div class="form-group col-md-2 form-item-create-employer">
+                <label for="hours">Horas</label>
+                <input type="number" class="form-control" id="hours">
+            </div>
+            <button type="submit" class="btn btn-primary">Registrar</button>
+        </form>
+    </div>
+</div>
