@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./surplus-encomienda.component.scss']
 })
 export class SurplusEncomiendaComponent {
-
+  
 }

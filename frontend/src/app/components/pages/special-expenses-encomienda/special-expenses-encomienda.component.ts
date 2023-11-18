@@ -12,27 +12,32 @@ export class SpecialExpensesEncomiendaComponent implements OnInit {
 
   ngOnInit() {
     const options = {
-      chart: {
-          type: 'donut',
-          height: 310,
-      },
-      labels: ['80% Send', '67% Read', '33% Unread'],
-      series: [80, 67, 33],
-      colors: ['#6956CE', '#1CD3D2', '#4788ff'],
-      dataLabels: {
-          enabled: false,
-      },
-      responsive: [{
-          breakpoint: 480,
-          options: {
-              legend: {
-                  position: 'bottom'
-              }
-          }
-      }]
-  }
+        chart: {
+            width: '100%',
+            height: 430,
+            type: 'pie',
+        },
+        series: [2500, 1500, 440],
+        labels: ["reparacion sucursal", "asesoria legal", "algo con los vehiculos (gas)"],
+        theme: {
+            monochrome: {
+                enabled: true
+            }
+        },
+        responsive: [{
+            breakpoint: 480,
+            options: {
+                chart: {
+                    width: 200
+                },
+                legend: {
+                    position: 'bottom'
+                }
+            }
+        }]
+    }
     const chart = new ApexCharts(
-        document.querySelector("#chart"),
+        document.querySelector("#special-expenses-monochrome-pie-chart"),
         options
     );
     chart.render();

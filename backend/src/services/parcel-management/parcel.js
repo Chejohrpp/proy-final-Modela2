@@ -1,3 +1,5 @@
+// ESTO NO SIRVE, NI ESTAN ACUTALIZADAS LAS RUTAS
+
 // parcel.js
 
 // Importa la conexión a la base de datos y otros módulos necesarios

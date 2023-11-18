@@ -156,6 +156,8 @@ import { BranchExpensesEncomiendaComponent } from './components/pages/branch-exp
 import { SpecialExpensesEncomiendaComponent } from './components/pages/special-expenses-encomienda/special-expenses-encomienda.component';
 import { MonthlyGoalsEncomiendaComponent } from './components/pages/monthly-goals-encomienda/monthly-goals-encomienda.component';
 import { SurplusEncomiendaComponent } from './components/pages/surplus-encomienda/surplus-encomienda.component';
+import { SurplusGlobalComponent } from './components/pages/surplus-encomienda/surplus-global/surplus-global.component';
+import { SurplusGenericComponent } from './components/pages/surplus-encomienda/surplus-generic/surplus-generic.component';
 
 @NgModule({
   declarations: [
@@ -313,6 +315,8 @@ import { SurplusEncomiendaComponent } from './components/pages/surplus-encomiend
     SpecialExpensesEncomiendaComponent,
     MonthlyGoalsEncomiendaComponent,
     SurplusEncomiendaComponent,
+    SurplusGlobalComponent,
+    SurplusGenericComponent,
   ],
   imports: [
     BrowserModule,
