@@ -1,3 +1,4 @@
+DROP SCHEMA IF EXISTS `encomienda` ;
 CREATE SCHEMA IF NOT EXISTS `encomienda` DEFAULT CHARACTER SET utf8 ;
 USE `encomienda` ;
 
@@ -56,7 +57,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Employee` (
   `hours` INT NOT NULL,
   `branch` INT NOT NULL,
   PRIMARY KEY (`id_employee`),
-  INDEX `FK_EMPLOYEE_BRANCH` () VISIBLE,
+  -- INDEX `FK_EMPLOYEE_BRANCH` () VISIBLE,
   INDEX `FK_EMPLOYEE_BRANCH_idx` (`branch` ASC) VISIBLE,
   INDEX `FK_EMPLOYEE_ROLE_idx` (`role_assignment` ASC) VISIBLE,
   CONSTRAINT `FK_EMPLOYEE_BRANCH`

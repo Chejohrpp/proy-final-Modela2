@@ -3,7 +3,7 @@ import * as employeeController from '../../controllers/organization-controllers/
 
 const router = Router();
 
-router.get('/getall', employeeController.getAllRoles);
+router.get('/getallroles', employeeController.getAllRoles);
 
 
 export { router as employeeRoutes}

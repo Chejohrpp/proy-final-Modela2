@@ -158,6 +158,8 @@ import { MonthlyGoalsEncomiendaComponent } from './components/pages/monthly-goal
 import { SurplusEncomiendaComponent } from './components/pages/surplus-encomienda/surplus-encomienda.component';
 import { SurplusGlobalComponent } from './components/pages/surplus-encomienda/surplus-global/surplus-global.component';
 import { SurplusGenericComponent } from './components/pages/surplus-encomienda/surplus-generic/surplus-generic.component';
+import { MainService } from './services/main.service';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -320,9 +322,10 @@ import { SurplusGenericComponent } from './components/pages/surplus-encomienda/s
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
-  providers: [],
+  providers: [MainService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

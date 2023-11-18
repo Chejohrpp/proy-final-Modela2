@@ -8,4 +8,5 @@ INSERT INTO `encomienda`.`Role` (`name`) VALUES
 ('Auxiliar de Piloto'),
 ('Gerente'),
 ('Informática'),
+('pasante'),
 ('Contador');
