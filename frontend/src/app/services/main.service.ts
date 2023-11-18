@@ -10,7 +10,15 @@ export class MainService {
 
   constructor(private http: HttpClient) {}
 
-  getAllRoles(): Observable<any>{
-    return this.http.get(`${this.BASE_URL}/getAllroles`)
+  getRolesSalaryByBranch(branch:any): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getRolesSalaryByBranch/${branch}`)
+  }
+
+  getAllBranchEmployee(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getallbranchemployee`)
+  }
+
+  createEmployee(employee:any): Observable<any>{
+    return this.http.post(`${this.BASE_URL}/createEmployee`,employee)
   }
 }

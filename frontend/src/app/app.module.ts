@@ -160,6 +160,7 @@ import { SurplusGlobalComponent } from './components/pages/surplus-encomienda/su
 import { SurplusGenericComponent } from './components/pages/surplus-encomienda/surplus-generic/surplus-generic.component';
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -323,7 +324,8 @@ import { HttpClientModule } from '@angular/common/http';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule
   ],
   providers: [MainService],
   bootstrap: [AppComponent]

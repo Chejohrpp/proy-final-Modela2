@@ -32,8 +32,8 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Role_Assignment` (
   `branch` INT NOT NULL,
   `role` INT NOT NULL,
   `salary` DECIMAL(10,2) NOT NULL,
-  INDEX `FK_RA_BRANCH_idx` (`branch` ASC) VISIBLE,
-  INDEX `FK_RA_ROLE_idx` (`role` ASC) VISIBLE,
+  INDEX `FK_RA_BRANCH_idx` (`branch` ASC) ,
+  INDEX `FK_RA_ROLE_idx` (`role` ASC) ,
   PRIMARY KEY (`id_role`),
   CONSTRAINT `FK_RA_BRANCH`
     FOREIGN KEY (`branch`)
@@ -52,19 +52,15 @@ ENGINE = InnoDB;
 -- Table `encomienda`.`Employee`
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `encomienda`.`Employee` (
-  `id_employee` INT NOT NULL,
+  `id_employee` INT NOT NULL AUTO_INCREMENT,
+  `first_name` VARCHAR(50) NOT NULL,
+  `last_name` VARCHAR(50) NOT NULL,
+  `email` VARCHAR(100) NOT NULL,
+  `password` TEXT NOT NULL,
   `role_assignment` INT NOT NULL,
   `hours` INT NOT NULL,
-  `branch` INT NOT NULL,
   PRIMARY KEY (`id_employee`),
-  -- INDEX `FK_EMPLOYEE_BRANCH` () VISIBLE,
-  INDEX `FK_EMPLOYEE_BRANCH_idx` (`branch` ASC) VISIBLE,
-  INDEX `FK_EMPLOYEE_ROLE_idx` (`role_assignment` ASC) VISIBLE,
-  CONSTRAINT `FK_EMPLOYEE_BRANCH`
-    FOREIGN KEY (`branch`)
-    REFERENCES `encomienda`.`Branch` (`id_branch`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+  INDEX `FK_EMPLOYEE_ROLE_idx` (`role_assignment` ASC) ,
   CONSTRAINT `FK_EMPLOYEE_ROLE`
     FOREIGN KEY (`role_assignment`)
     REFERENCES `encomienda`.`Role_Assignment` (`id_role`)
@@ -73,15 +69,16 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Employee` (
 ENGINE = InnoDB;
 
 
+
 -- -----------------------------------------------------
 -- Table `encomienda`.`Fee`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `encomienda`.`Fee` (
-  `id_fee` INT NOT NULL AUTO_INCREMENT,
-  `name` VARCHAR(100) NULL,
-  `amount` DECIMAL(10,2) NULL,
-  PRIMARY KEY (`id_fee`))
-ENGINE = InnoDB;
+-- CREATE TABLE IF NOT EXISTS `encomienda`.`Fee` (
+--   `id_fee` INT NOT NULL AUTO_INCREMENT,
+--   `name` VARCHAR(100) NULL,
+--   `amount` DECIMAL(10,2) NULL,
+--   PRIMARY KEY (`id_fee`))
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -89,6 +86,7 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `encomienda`.`Payment` (
   `id_payment` INT NOT NULL AUTO_INCREMENT,
+  `amount` DECIMAL(10,2) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `date` DATE NOT NULL,
   PRIMARY KEY (`id_payment`))
@@ -98,29 +96,29 @@ ENGINE = InnoDB;
 -- -----------------------------------------------------
 -- Table `encomienda`.`Payment_Fee`
 -- -----------------------------------------------------
-CREATE TABLE IF NOT EXISTS `encomienda`.`Payment_Fee` (
-  `id_payment` INT NOT NULL,
-  `fee` INT NOT NULL,
-  `employee` INT NOT NULL,
-  PRIMARY KEY (`id_payment`),
-  INDEX `FK_FEE_idx` (`fee` ASC) VISIBLE,
-  INDEX `FK_FEE_EMPLOYEE_idx` (`employee` ASC) VISIBLE,
-  CONSTRAINT `FK_FEE_FEE`
-    FOREIGN KEY (`fee`)
-    REFERENCES `encomienda`.`Fee` (`id_fee`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_FEE_EMPLOYEE`
-    FOREIGN KEY (`employee`)
-    REFERENCES `encomienda`.`Employee` (`id_employee`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
-  CONSTRAINT `FK_FEE_PAYMENT`
-    FOREIGN KEY (`id_payment`)
-    REFERENCES `encomienda`.`Payment` (`id_payment`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION)
-ENGINE = InnoDB;
+-- CREATE TABLE IF NOT EXISTS `encomienda`.`Payment_Fee` (
+--   `id_payment` INT NOT NULL,
+--   `fee` INT NOT NULL,
+--   `employee` INT NOT NULL,
+--   PRIMARY KEY (`id_payment`),
+--   INDEX `FK_FEE_idx` (`fee` ASC) ,
+--   INDEX `FK_FEE_EMPLOYEE_idx` (`employee` ASC) ,
+--   CONSTRAINT `FK_FEE_FEE`
+--     FOREIGN KEY (`fee`)
+--     REFERENCES `encomienda`.`Fee` (`id_fee`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `FK_FEE_EMPLOYEE`
+--     FOREIGN KEY (`employee`)
+--     REFERENCES `encomienda`.`Employee` (`id_employee`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION,
+--   CONSTRAINT `FK_FEE_PAYMENT`
+--     FOREIGN KEY (`id_payment`)
+--     REFERENCES `encomienda`.`Payment` (`id_payment`)
+--     ON DELETE NO ACTION
+--     ON UPDATE NO ACTION)
+-- ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------
@@ -136,8 +134,8 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Shipment` (
   `payment` DECIMAL(10,2) NOT NULL,
   `status` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_shipment`),
-  INDEX `FK_S_BORIGIN_idx` (`origin` ASC) VISIBLE,
-  INDEX `FK_S_DESTINY_idx` (`destiny` ASC) VISIBLE,
+  INDEX `FK_S_BORIGIN_idx` (`origin` ASC) ,
+  INDEX `FK_S_DESTINY_idx` (`destiny` ASC) ,
   CONSTRAINT `FK_S_ORIGIN`
     FOREIGN KEY (`origin`)
     REFERENCES `encomienda`.`Branch` (`id_branch`)
@@ -181,7 +179,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Cost_Assignment` (
   `cost` INT NOT NULL,
   `branch` INT NOT NULL,
   `amount` DECIMAL(10,2) NOT NULL,
-  INDEX `FK_CA_BRANCH_idx` (`branch` ASC) VISIBLE,
+  INDEX `FK_CA_BRANCH_idx` (`branch` ASC) ,
   PRIMARY KEY (`id_cost`),
   CONSTRAINT `FK_CA_COST`
     FOREIGN KEY (`cost`)
@@ -204,7 +202,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Payment_Salary` (
   `employee` INT NOT NULL,
   `month_year` VARCHAR(25) NOT NULL,
   PRIMARY KEY (`id_salary`),
-  INDEX `FK_S_EMPLOYEE_idx` (`employee` ASC) VISIBLE,
+  INDEX `FK_S_EMPLOYEE_idx` (`employee` ASC) ,
   CONSTRAINT `FK_S_PAYMENT`
     FOREIGN KEY (`id_salary`)
     REFERENCES `encomienda`.`Payment` (`id_payment`)
@@ -241,7 +239,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Payment_Cost` (
   `id_payment` INT NOT NULL,
   `id_cost_assignment` INT NOT NULL,
   PRIMARY KEY (`id_payment`),
-  INDEX `FK_PC_COST_idx` (`id_cost_assignment` ASC) VISIBLE,
+  INDEX `FK_PC_COST_idx` (`id_cost_assignment` ASC) ,
   CONSTRAINT `FK_PC_COST`
     FOREIGN KEY (`id_cost_assignment`)
     REFERENCES `encomienda`.`Cost_Assignment` (`id_cost`)
@@ -281,7 +279,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Point_Near` (
   `active` TINYINT NOT NULL DEFAULT 1,
   `time` INT NOT NULL,
   PRIMARY KEY (`id_point_near`),
-  INDEX `FK_PN_NEXT_idx` (`destiny` ASC) VISIBLE,
+  INDEX `FK_PN_NEXT_idx` (`destiny` ASC) ,
   CONSTRAINT `FK_PN_CURRENT`
     FOREIGN KEY (`origin`)
     REFERENCES `encomienda`.`Point` (`id_point`)
@@ -315,8 +313,8 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Point_Assignment` (
   `id_route` INT NOT NULL,
   `sequence` INT NOT NULL,
   PRIMARY KEY (`id_point_assignment`),
-  INDEX `FK_PA_POINT_idx` (`id_point` ASC) VISIBLE,
-  INDEX `FK_PA_ROUTE_idx` (`id_route` ASC) VISIBLE,
+  INDEX `FK_PA_POINT_idx` (`id_point` ASC) ,
+  INDEX `FK_PA_ROUTE_idx` (`id_route` ASC) ,
   CONSTRAINT `FK_PA_POINT`
     FOREIGN KEY (`id_point`)
     REFERENCES `encomienda`.`Point_Near` (`id_point_near`)
@@ -341,8 +339,8 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Route_Assignment` (
   `sequence` INT NOT NULL DEFAULT 0,
   `retorned` TINYINT NOT NULL DEFAULT 0,
   PRIMARY KEY (`id_route_assignment`),
-  INDEX `FK_RA_ROUTE_idx` (`route` ASC) VISIBLE,
-  INDEX `FK_RA_TRANSPORT_idx` (`transport` ASC) VISIBLE,
+  INDEX `FK_RA_ROUTE_idx` (`route` ASC) ,
+  INDEX `FK_RA_TRANSPORT_idx` (`transport` ASC) ,
   CONSTRAINT `FK_RA_ROUTE`
     FOREIGN KEY (`route`)
     REFERENCES `encomienda`.`Route` (`id_route`)
