@@ -71,6 +71,7 @@ import { BranchComponent } from './components/pages/branch/branch/branch.compone
 import { TransportComponent } from './components/pages/routes/transport/transport.component';
 import { RoutesComponent } from './components/pages/routes/routes.component';
 import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
+import { CreateHonorariumEncomiendaComponent } from './components/pages/encomienda-gestion/create-honorarium-encomienda/create-honorarium-encomienda.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -106,6 +107,7 @@ const routes: Routes = [
       {path: 'report', data: { breadcrumb: 'Visualizar reportes' }, component: ReportsEncomiendaComponent},
       {path: 'honorarium', data: { breadcrumb: 'tabla de honorarios' }, component: HonorariumTableEncomiendaComponent},
       {path: 'create-expense', data: { breadcrumb: 'crear un nuevo gasto' }, component: CreateExpenseEncomiendaComponent},
+      {path: 'create-honorarium', data: { breadcrumb: 'crear un nuevo honorario' }, component: CreateHonorariumEncomiendaComponent},
     ]
   },
   {path: 'branch-expenses', component: BranchExpensesEncomiendaComponent},

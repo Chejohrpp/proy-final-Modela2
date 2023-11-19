@@ -107,7 +107,7 @@ async function createEmployeePayment(amount) {
     const type = 'employee'
     const conn = await db.getConnection();
     try {
-        const user = await conn.query('INSERT INTO payment (amount, type, date) VALUES (?,?,CURRENT_TIMESTAMP())', [
+        const user = await conn.query('INSERT INTO payment (amount, type_payment, date) VALUES (?,?,CURRENT_TIMESTAMP())', [
             amount,
             type
         ]);        
@@ -151,5 +151,28 @@ export async function getRoleAssignment (assignmentinfo) {
         throw error;
     } finally {
         if (conn) conn.end();
+    }
+}
+
+export async function getemployeesSalary () {
+    const conn = await db.getConnection();
+    try {
+        const rolesList = await conn.query(`
+        SELECT
+            E.id_employee,
+            E.first_name,
+            E.last_name,
+            E.email,
+            RA.salary
+        FROM
+            Employee E
+        INNER JOIN
+            Role_Assignment RA ON E.role_assignment = RA.id_role;    
+        `);
+        return rolesList
+    } catch (error) {
+        throw error;
+    } finally {
+        if (conn) conn.release(); // Reemplaza conn.end() con conn.release()
     }
 }

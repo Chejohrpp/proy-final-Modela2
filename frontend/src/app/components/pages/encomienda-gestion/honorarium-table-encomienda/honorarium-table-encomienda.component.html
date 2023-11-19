@@ -3,7 +3,7 @@
     <h1>Dashboard</h1>
 
     <ol class="breadcrumb">
-        <li class="item"><a routerLink="/encomienda-gestion/honorarium"><i class='bx bx-home-alt'></i></a></li>
+        <li class="item"><a routerLink="/encomienda-gestion/create-honorarium"><i class='bx bx-home-alt'></i></a></li>
 
         <li class="item">Dashboard</li>
 
@@ -30,7 +30,7 @@
                         <div class="icon mb-3">
                             <i class='bx bx-award'></i>
                         </div>
-                        <h3>Felicidades Mark!</h3>
+                        <h3>Felicidades {{honorariumData[0].Nombre }}! </h3>
                         <p class="mb-0">Lo has hecho, el puesto <strong>#1</strong> Has apoyado con todo tu corazon a esta compañia y estamos agradecidos contigo</p>
                     </div>
                 </div>
@@ -59,54 +59,36 @@
                 <i class='bx bx-dots-horizontal-rounded' ></i>
             </button>
             <div class="dropdown-menu">
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                    <i class='bx bx-show'></i> View
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
+                <a class="dropdown-item d-flex align-items-center" href="encomienda-gestion/create-honorarium">
                     <i class='bx bx-edit-alt'></i> Edit
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                    <i class='bx bx-trash'></i> Delete
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                    <i class='bx bx-printer'></i> Print
-                </a>
-                <a class="dropdown-item d-flex align-items-center" href="javascript:void(0)">
-                    <i class='bx bx-download'></i> Download
                 </a>
             </div>
         </div>
     </div>
 
-<div class="table-responsive">
-    <table class="table table-bordered table-hover">
-        <thead>
-            <tr>
-                <th scope="col">Posicion</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Apellido</th>
-                <th scope="col">Email</th>
-                <th scope="col">Horas extras</th>
-                <th scope="col">Ganancias</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr>
-                <th scope="row">1</th>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>MarkOtto@encomienda.com</td>
-                <td>55</td>
-                <td>Q.500</td>
-            </tr>
-            <tr>
-                <th scope="row">2</th>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>JacobThornton@encomienda.com</td>
-                <td>54</td>
-                <td>Q.350</td>
-            </tr>
-    </table>
-</div>
+    <div class="table-responsive">
+        <table class="table table-bordered table-hover">
+            <thead>
+                <tr>
+                    <th scope="col">Posicion</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Apellido</th>
+                    <th scope="col">Email</th>
+                    <th scope="col">Horas extras</th>
+                    <th scope="col">Ganancias</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let dataItem of honorariumData">
+                    <td>{{ dataItem.Posicion }}</td>
+                    <td>{{ dataItem.Nombre }}</td>
+                    <td>{{ dataItem.Apellido }}</td>
+                    <td>{{ dataItem.Email }}</td>
+                    <td>{{ dataItem['Horas extras'] }}</td>
+                    <td>{{ dataItem.Ganancias }}</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    
 </div>

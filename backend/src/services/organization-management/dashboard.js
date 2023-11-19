@@ -10,7 +10,7 @@ export async function totalBranchExpensesMonth() {
                 YEAR(date) AS year,
                 SUM(amount) AS total_operating_expenses
             FROM payment
-            WHERE type = 'branch_expense'
+            WHERE type_payment = 'branch_expense'
             GROUP BY YEAR(date), MONTH(date)
         `;
         const total = await conn.query(query);
@@ -32,7 +32,7 @@ export async function totalSpecialsExpensesMonth() {
                     YEAR(date) AS year,
                     SUM(amount) AS total_special_expenses
                 FROM payment
-                WHERE type = 'special_expense'
+                WHERE type_payment = 'special_expense'
                 GROUP BY YEAR(date), MONTH(date);
         `;
         const total = await conn.query(query);

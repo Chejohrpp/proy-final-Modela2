@@ -13,6 +13,19 @@ export const getAllRoles = async (req, res) => {
     }
 }
 
+export const getemployeesSalary = async (req, res) => {
+    try {
+        const  rolesList = await dbEmployeeManager.getemployeesSalary();
+        res.json( rolesList);
+    } catch (error) {
+        console.error(error);
+        res.json({
+            // message: "Ocurrió un error al extraer los roles",
+            message: error.message
+        });
+    }
+}
+
 export const getAllBranch = async (req, res) => {
     try {
         const  branchList = await dbEmployeeManager.getAllBranch();

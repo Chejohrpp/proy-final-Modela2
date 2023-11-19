@@ -38,5 +38,15 @@ export class MainService {
     return this.http.get(`${this.BASE_URL}/totalSpecialsExpensesMonth/`)
   }
 
-
+  getTableHonorarium(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getTableHonorarium/`)
+  }
+  
+  inserthonorarium(honorario:any): Observable<any>{
+    return this.http.post(`${this.BASE_URL}/inserthonorarium`,honorario)
+  }
+  
+  getemployeesSalary(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getemployeesSalary`)
+  }
 }

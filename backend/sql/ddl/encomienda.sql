@@ -87,39 +87,44 @@ ENGINE = InnoDB;
 CREATE TABLE IF NOT EXISTS `encomienda`.`Payment` (
   `id_payment` INT NOT NULL AUTO_INCREMENT,
   `amount` DECIMAL(10,2) NOT NULL,
-  `type` VARCHAR(45) NOT NULL,
+  `type_payment` VARCHAR(45) NOT NULL,
   `date` DATE NOT NULL,
   `description` VARCHAR(500) NULL,
   PRIMARY KEY (`id_payment`))
 ENGINE = InnoDB;
 
+-- -----------------------------------------------------
+-- Table `encomienda`.`Budget`
+-- -----------------------------------------------------
+CREATE TABLE IF NOT EXISTS `encomienda`.`Budget` (
+  `month_year` VARCHAR(7) NOT NULL COMMENT 'Formato: MM-YYYY (mes-año)',
+  `amount` DECIMAL(10,2) NOT NULL COMMENT 'Cantidad del presupuesto',
+  PRIMARY KEY (`month_year`)
+)
+ENGINE = InnoDB;
+
+
 
 -- -----------------------------------------------------
--- Table `encomienda`.`Payment_Fee`
+-- Table `encomienda`.`Honorarium`
 -- -----------------------------------------------------
--- CREATE TABLE IF NOT EXISTS `encomienda`.`Payment_Fee` (
---   `id_payment` INT NOT NULL,
---   `fee` INT NOT NULL,
---   `employee` INT NOT NULL,
---   PRIMARY KEY (`id_payment`),
---   INDEX `FK_FEE_idx` (`fee` ASC) ,
---   INDEX `FK_FEE_EMPLOYEE_idx` (`employee` ASC) ,
---   CONSTRAINT `FK_FEE_FEE`
---     FOREIGN KEY (`fee`)
---     REFERENCES `encomienda`.`Fee` (`id_fee`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---   CONSTRAINT `FK_FEE_EMPLOYEE`
---     FOREIGN KEY (`employee`)
---     REFERENCES `encomienda`.`Employee` (`id_employee`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION,
---   CONSTRAINT `FK_FEE_PAYMENT`
---     FOREIGN KEY (`id_payment`)
---     REFERENCES `encomienda`.`Payment` (`id_payment`)
---     ON DELETE NO ACTION
---     ON UPDATE NO ACTION)
--- ENGINE = InnoDB;
+CREATE TABLE IF NOT EXISTS `encomienda`.`Honorarium` (
+  `id_payment` INT NOT NULL,
+  `employee` INT NOT NULL,
+  `hours` INT NOT NULL,
+  PRIMARY KEY (`id_payment`),
+  INDEX `FK_FEE_EMPLOYEE_idx` (`employee` ASC) ,
+  CONSTRAINT `FK_FEE_EMPLOYEE`
+    FOREIGN KEY (`employee`)
+    REFERENCES `encomienda`.`Employee` (`id_employee`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION,
+  CONSTRAINT `FK_FEE_PAYMENT`
+    FOREIGN KEY (`id_payment`)
+    REFERENCES `encomienda`.`Payment` (`id_payment`)
+    ON DELETE NO ACTION
+    ON UPDATE NO ACTION)
+ENGINE = InnoDB;
 
 
 -- -----------------------------------------------------

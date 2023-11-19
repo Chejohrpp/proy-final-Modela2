@@ -3,7 +3,7 @@ import * as db from '../../database/connection.config.js';
 export async function insertPaymentExpense(expense) {
     const conn = await db.getConnection();
     try {
-        const payment = await conn.query('INSERT INTO payment (amount, type, date,description) VALUES (?,?,?,?)', [
+        const payment = await conn.query('INSERT INTO payment (amount, type_payment, date,description) VALUES (?,?,?,?)', [
             expense.amount,
             expense.type,            
             expense.date,
@@ -25,7 +25,7 @@ export async function getPaymentExpenseByType(data) {
         const lastDayOfMonth = new Date(startDate.getFullYear(), startDate.getMonth() + 1, 0);
 
         const payment = await conn.query(
-            'SELECT * FROM payment WHERE type = ? AND date BETWEEN ? AND ?',
+            'SELECT * FROM payment WHERE type_payment = ? AND date BETWEEN ? AND ?',
             [data.type, firstDayOfMonth, lastDayOfMonth]
         );
 

@@ -140,6 +140,7 @@ import { OverComponent } from './modals/over/over.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
+import { CreateHonorariumEncomiendaComponent } from './components/pages/encomienda-gestion/create-honorarium-encomienda/create-honorarium-encomienda.component';
 
 @NgModule({
   declarations: [
@@ -277,6 +278,7 @@ import { NewRouteComponent } from './components/pages/routes/new-route/new-route
     TransportComponent,
     OverComponent,
     NewRouteComponent,
+    CreateHonorariumEncomiendaComponent,
   ],
   imports: [
     BrowserModule,

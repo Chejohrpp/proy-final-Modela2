@@ -1,0 +1,40 @@
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="card-header">
+            <h3>Crear Honorario</h3>
+        </div>
+        <form (ngSubmit)="submitForm()">
+            <div class="input-group col-md-2 form-item-create-employer">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Q.</span>
+                </div>
+                <input type="number" class="form-control" placeholder="Ingrese el gasto" id="salary"
+                    [(ngModel)]="honorarioData.amount" name="amount" disabled>
+            </div>
+            <div class="form-group col-md-7 form-item-create-employer">
+                <label for="date">Fecha</label>
+                <input type="date" class="form-control" id="date" [(ngModel)]="honorarioData.date" name="date">
+            </div>
+            <div class="row">
+                <div class="form-group col form-item-create-employer">
+                    <label for="inputState">Empleado</label>
+                    <select id="inputState" class="form-control" [(ngModel)]="honorarioData.employee" name="employee" (change)="updateSalary()">
+                        <option *ngFor="let employee of employees" [value]="employee.id_employee">
+                            {{ employee.first_name }} ({{ employee.email }})
+                        </option>
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-md-7 form-item-create-employer">
+                <label for="full_name">Nombre</label>
+                <input type="text" class="form-control" id="description" [(ngModel)]="full_name" name="full_name" disabled>
+            </div>
+            <div class="form-group col-md-2 form-item-create-employer">
+                <label for="hours">Horas</label>
+                <input type="number" class="form-control" id="hours" [(ngModel)]="honorarioData.hours" name="hours"
+                    (change)="updateSalary()">
+            </div>
+            <button type="submit" class="btn btn-primary">Añadir Honorario</button>
+        </form>
+    </div>
+</div>
