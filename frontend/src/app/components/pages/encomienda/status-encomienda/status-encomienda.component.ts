@@ -10,9 +10,14 @@ declare let L: any;
 export class StatusEncomiendaComponent implements OnInit {
   qrSearch = 0;
   code: any;
+  map: any;
   ngOnInit(): void {
-    var map = L.map("map-container").setView([15.85, -90.384487], 7);
-    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', { foo: 'bar', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(map);
+    if (this.map) {
+      this.map = this.map.off();
+      this.map = this.map.remove();
+    }
+    this.map = L.map("map-container").setView([15.85, -90.384487], 7);
+    L.tileLayer('https://tile.openstreetmap.org/{z}/{x}/{y}.png?{foo}', { foo: 'bar', attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors' }).addTo(this.map);
     L.Routing.control({
       waypoints: [
         L.latLng(15.85, -90), // Starting point
@@ -23,7 +28,7 @@ export class StatusEncomiendaComponent implements OnInit {
         ]
       },
       show: false
-    }).addTo(map);
+    }).addTo(this.map);
     L.Routing.control({
       waypoints: [
         L.latLng(15.90, -90.5), // Waypoint 1
@@ -33,8 +38,8 @@ export class StatusEncomiendaComponent implements OnInit {
           { color: 'white', opacity: 1, weight: 5 }, // Waypoint 1 to Waypoint 2
         ]
       },
-      show:false
-    }).addTo(map);
+      show: false
+    }).addTo(this.map);
   }
 
   domReady(fn: any) {

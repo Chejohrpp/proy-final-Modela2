@@ -1,0 +1,37 @@
+<div class="breadcrumb-area">
+	<h1>Gestión de rutas</h1>
+</div>
+<div class="card mt-2">
+	<div class="card-header">
+		<h3>Agregar conexión<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
+				data-bs-title="Las conexiones sirven para crear las rutas" class="fa fa-circle-question"></i></h3>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<span>Crea una conexión seleccionando un punto en el mapa <img src="../../../../../assets/img/marker.png"
+					alt="" width="10px" height="auto"> y define los puntos a
+				los que puedes llegar desde dicho punto
+				<img src="../../../../../assets/img/marker2.png" alt="" width="10px" height="auto"></span> <span
+				class="text-muted" style="font-size: 0.8em;">Si el punto ya existe, no se creará</span>
+		</div>
+		<div class="row">
+			<div id="map-container">
+
+			</div>
+		</div>
+		<div class="input-group input-group-sm">
+			<button class="btn btn-success" (click)="sendPoints()" [disabled]="branchesNear.length == 0">GUARDAR
+				CONEXION</button>
+		</div>
+	</div>
+</div>
+<app-over [name]="'Ingresa la distancia y el tiempo aproximado'" [showContent]="show.route" (saveChanges)="sendRoute()">
+	<div class="input-group input-group-sm">
+		<label for="distance" class="input-group-text">Distancia <span class="text-muted">km</span></label>
+		<input type="number" [(ngModel)]="newPointNear.distance" name="distance" id="distance" class="form-control">
+	</div>
+	<div class="input-group input-group-sm">
+		<label for="time" class="input-group-text">Tiempo <span class="text-muted">hr</span></label>
+		<input type="number" [(ngModel)]="newPointNear.time" name="time" id="time" class="form-control">
+	</div>
+</app-over>

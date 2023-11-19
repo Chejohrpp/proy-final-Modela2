@@ -2,7 +2,7 @@
 <div class="sidemenu-area">
     <div class="sidemenu-header">
         <a href="/dashboard/analytics" class="navbar-brand d-flex align-items-center">
-            <img class="brand-image" src="assets/img/encomienda.png" alt="image">
+            <img class="brand-image" src="assets/img/logo.svg" alt="image">
             <span>Encomienda</span>
         </a>
 
@@ -25,7 +25,7 @@
                 Main
             </li>
 
-            <li class="nav-item" routerLinkActive="active mm-active">
+            <!-- <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-home-circle'></i></span>
                     <span class="menu-title">Dashboard</span>
@@ -47,24 +47,22 @@
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li> -->
             <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bxs-package'></i></span>
                     <span class="menu-title">Encomienda</span>
                     <span class="badge">3</span>
                 </a>
-
                 <ul class="sidemenu-nav-second-level">
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="/encomienda/send" class="nav-link">
+                        <a href="/encomienda/send" class="nav-link">
                             <span class="icon"><i class='fa fa-truck-fast'></i></span>
                             <span class="menu-title">Enviar encomienda</span>
                         </a>
                     </li>
-
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="/encomienda/status" class="nav-link">
+                        <a href="/encomienda/status" class="nav-link">
                             <span class="icon"><i class='fa fa-map-location-dot'></i></span>
                             <span class="menu-title">Estado de encomienda</span>
                         </a>
@@ -77,8 +75,6 @@
                     </li>
                 </ul>
             </li>
-
-            
             <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='fa fa-building'></i></span>
@@ -88,20 +84,39 @@
 
                 <ul class="sidemenu-nav-second-level">
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="/encomienda/send" class="nav-link">
+                        <a routerLink="/branch/new" class="nav-link">
                             <span class="icon"><i class='fa fa-building'></i></span>
                             <span class="menu-title">Crear sucursal</span>
                         </a>
                     </li>
+                </ul>
+            </li>
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='fa fa-route'></i></span>
+                    <span class="menu-title">Rutas</span>
+                    <span class="badge">2</span>
+                </a>
 
+                <ul class="sidemenu-nav-second-level">
                     <li class="nav-item" routerLinkActive="active">
-                        <a routerLink="/encomienda/status" class="nav-link">
-                            <span class="icon"><i class='fa fa-cubes'></i></span>
-                            <span class="menu-title">Control de paquetes</span>
+                        <a routerLink="/routes/transport" class="nav-link">
+                            <span class="icon">
+                                <i class="fa fa-truck-moving"></i>
+                            </span>
+                            <span class="menu-title">Gestión de transportes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/routes/new" class="nav-link">
+                            <span class="icon">
+                                <i class="fa fa-map-location-dot"></i>
+                            </span>
+                            <span class="menu-title">Gestión de rutas</span>
                         </a>
                     </li>
                 </ul>
-            </li>
+            </li><!-- 
             <li class="nav-item-title">
                 Apps
             </li>
@@ -511,7 +526,7 @@
                     <span class="menu-title">Blank Page</span>
                 </a>
             </li>
-            
+
             <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-lock-open'></i></span>
@@ -779,7 +794,7 @@
                     <span class="icon"><i class='bx bx-support'></i></span>
                     <span class="menu-title">Support</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

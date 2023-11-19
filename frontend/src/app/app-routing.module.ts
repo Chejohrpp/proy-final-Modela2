@@ -8,7 +8,6 @@ import { AppTodoComponent } from './components/pages/app-todo/app-todo.component
 import { AppCalendarComponent } from './components/pages/app-calendar/app-calendar.component';
 import { GalleryComponent } from './components/pages/gallery/gallery.component';
 import { TimelineComponent } from './components/pages/timeline/timeline.component';
-import { PricingComponent } from './components/pages/pricing/pricing.component';
 import { FaqComponent } from './components/pages/faq/faq.component';
 import { InvoiceComponent } from './components/pages/invoice/invoice.component';
 import { BlankPageComponent } from './components/pages/blank-page/blank-page.component';
@@ -25,41 +24,9 @@ import { FormLayoutComponent } from './components/pages/forms/form-layout/form-l
 import { FormInputGroupComponent } from './components/pages/forms/form-input-group/form-input-group.component';
 import { TableLightComponent } from './components/pages/table/table-light/table-light.component';
 import { TableDarkComponent } from './components/pages/table/table-dark/table-dark.component';
-import { InboxComponent } from './components/pages/app-email/inbox/inbox.component';
-import { ReadComponent } from './components/pages/app-email/read/read.component';
-import { ComposeComponent } from './components/pages/app-email/compose/compose.component';
 import { FormComponent } from './components/pages/forms/form/form.component';
 import { CardComponent } from './components/pages/card/card/card.component';
-import { AppEmailComponent } from './components/pages/app-email/app-email/app-email.component';
 import { TableComponent } from './components/pages/table/table/table.component';
-import { UiComponentsComponent } from './components/pages/ui-components/ui-components/ui-components.component';
-import { AlertsComponent } from './components/pages/ui-components/alerts/alerts.component';
-import { BadgesComponent } from './components/pages/ui-components/badges/badges.component';
-import { BordersComponent } from './components/pages/ui-components/borders/borders.component';
-import { ButtonsComponent } from './components/pages/ui-components/buttons/buttons.component';
-import { ButtonsGroupComponent } from './components/pages/ui-components/buttons-group/buttons-group.component';
-import { BreadcrumbComponent } from './components/pages/ui-components/breadcrumb/breadcrumb.component';
-import { SliderComponent } from './components/pages/ui-components/slider/slider.component';
-import { CollapseComponent } from './components/pages/ui-components/collapse/collapse.component';
-import { DisplayComponent } from './components/pages/ui-components/display/display.component';
-import { DropdownComponent } from './components/pages/ui-components/dropdown/dropdown.component';
-import { EmbedComponent } from './components/pages/ui-components/embed/embed.component';
-import { FiguresComponent } from './components/pages/ui-components/figures/figures.component';
-import { ImagesComponent } from './components/pages/ui-components/images/images.component';
-import { JumbotronComponent } from './components/pages/ui-components/jumbotron/jumbotron.component';
-import { ListGroupComponent } from './components/pages/ui-components/list-group/list-group.component';
-import { MediaObjectComponent } from './components/pages/ui-components/media-object/media-object.component';
-import { ModalComponent } from './components/pages/ui-components/modal/modal.component';
-import { NavsComponent } from './components/pages/ui-components/navs/navs.component';
-import { NavbarComponent } from './components/pages/ui-components/navbar/navbar.component';
-import { PaginationComponent } from './components/pages/ui-components/pagination/pagination.component';
-import { ProgressComponent } from './components/pages/ui-components/progress/progress.component';
-import { SpinnerComponent } from './components/pages/ui-components/spinner/spinner.component';
-import { TextComponent } from './components/pages/ui-components/text/text.component';
-import { VerticalAlignmentComponent } from './components/pages/ui-components/vertical-alignment/vertical-alignment.component';
-import { TypographyComponent } from './components/pages/ui-components/typography/typography.component';
-import { TooltipsComponent } from './components/pages/ui-components/tooltips/tooltips.component';
-import { PopoversComponent } from './components/pages/ui-components/popovers/popovers.component';
 import { LoginComponent } from './components/pages/authentication/login/login.component';
 import { AuthenticationComponent } from './components/pages/authentication/authentication/authentication.component';
 import { LoginWithImageComponent } from './components/pages/authentication/login-with-image/login-with-image.component';
@@ -90,6 +57,11 @@ import { EncomiendaComponent } from './components/pages/encomienda/encomienda.co
 import { StatusEncomiendaComponent } from './components/pages/encomienda/status-encomienda/status-encomienda.component';
 import { SendEncomiendaComponent } from './components/pages/encomienda/send-encomienda/send-encomienda.component';
 import { PriceEncomiendaComponent } from './components/pages/encomienda/price-encomienda/price-encomienda.component';
+import { NewBranchComponent } from './components/pages/branch/new-branch/new-branch.component';
+import { BranchComponent } from './components/pages/branch/branch/branch.component';
+import { TransportComponent } from './components/pages/routes/transport/transport.component';
+import { RoutesComponent } from './components/pages/routes/routes.component';
+import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -100,19 +72,20 @@ const routes: Routes = [
       {path: 'e-commerce', data: { breadcrumb: 'eCommerce' }, component: EcommerceComponent},
     ]
   },
-  {
-    path: 'app-email', component: AppEmailComponent,
-    children: [
-      {path: 'inbox', data: { breadcrumb: 'Inbox' }, component: InboxComponent},
-      {path: 'read', data: { breadcrumb: 'Email Read' }, component: ReadComponent},
-      {path: 'compose', data: { breadcrumb: 'Email Compose' }, component: ComposeComponent},
-    ]
-  },
   {path: 'encomienda', component: EncomiendaComponent,
   children: [
     {path: 'status', data: { breadcrumb: 'Estado Encomienda' }, component: StatusEncomiendaComponent},
     {path: 'send', data: { breadcrumb: 'Enviar Encomienda' }, component: SendEncomiendaComponent},
     {path: 'price', data: { breadcrumb: 'Tarifario' }, component: PriceEncomiendaComponent}
+  ]},
+  {path: 'routes', component: RoutesComponent,
+  children: [
+    {path: 'transport', data: { breadcrumb: 'Gestión de Transportes' }, component: TransportComponent},
+    {path: 'new', data: { breadcrumb: 'Agregar nueva ruta' }, component: NewRouteComponent},
+  ]},
+  {path: 'branch', component: BranchComponent,
+  children: [
+    {path: 'new', data: { breadcrumb: 'Crear Sucursal' }, component: NewBranchComponent}
   ]},
   {path: 'app-chat', component: AppChatComponent},
   {path: 'app-todo', component: AppTodoComponent},
@@ -136,38 +109,6 @@ const routes: Routes = [
     ]
   },
   {
-    path: 'ui-components', component: UiComponentsComponent,
-    children: [
-      {path: 'alerts', data: { breadcrumb: 'Alerts' }, component: AlertsComponent},
-      {path: 'badges', data: { breadcrumb: 'Badges' }, component: BadgesComponent},
-      {path: 'borders', data: { breadcrumb: 'Borders' }, component: BordersComponent},
-      {path: 'breadcrumb', data: { breadcrumb: 'Breadcrumbs' }, component: BreadcrumbComponent},
-      {path: 'buttons', data: { breadcrumb: 'Buttons' }, component: ButtonsComponent},
-      {path: 'buttons-group', data: { breadcrumb: 'Buttons Group' }, component: ButtonsGroupComponent},
-      {path: 'slider', data: { breadcrumb: 'Carousel' }, component: SliderComponent},
-      {path: 'collapse', data: { breadcrumb: 'Collapse' }, component: CollapseComponent},
-      {path: 'display', data: { breadcrumb: 'Display' }, component: DisplayComponent},
-      {path: 'dropdown', data: { breadcrumb: 'Dropdown' }, component: DropdownComponent},
-      {path: 'embed', data: { breadcrumb: 'Embed' }, component: EmbedComponent},
-      {path: 'figures', data: { breadcrumb: 'Figures' }, component: FiguresComponent},
-      {path: 'images', data: { breadcrumb: 'Images' }, component: ImagesComponent},
-      {path: 'jumbotron', data: { breadcrumb: 'Jumbotron' }, component: JumbotronComponent},
-      {path: 'list-group', data: { breadcrumb: 'List Group' }, component: ListGroupComponent},
-      {path: 'media-object', data: { breadcrumb: 'Media Object' }, component: MediaObjectComponent},
-      {path: 'modal', data: { breadcrumb: 'Modal' }, component: ModalComponent},
-      {path: 'navs', data: { breadcrumb: 'Navs' }, component: NavsComponent},
-      {path: 'navbar', data: { breadcrumb: 'Navbar' }, component: NavbarComponent},
-      {path: 'pagination', data: { breadcrumb: 'Pagination' }, component: PaginationComponent},
-      {path: 'progress', data: { breadcrumb: 'Progress' }, component: ProgressComponent},
-      {path: 'spinner', data: { breadcrumb: 'Spinner' }, component: SpinnerComponent},
-      {path: 'text', data: { breadcrumb: 'Text' }, component: TextComponent},
-      {path: 'vertical-alignment', data: { breadcrumb: 'Vertical Alignment' }, component: VerticalAlignmentComponent},
-      {path: 'typography', data: { breadcrumb: 'Typography' }, component: TypographyComponent},
-      {path: 'tooltips', data: { breadcrumb: 'Tooltips' }, component: TooltipsComponent},
-      {path: 'popovers', data: { breadcrumb: 'Popovers' }, component: PopoversComponent},
-    ]
-  },
-  {
     path: 'forms', component: FormComponent,
     children: [
       {path: 'form-layout', data: { breadcrumb: 'Forms' }, component: FormLayoutComponent},
@@ -184,7 +125,6 @@ const routes: Routes = [
   {path: 'profile', component: ProfileComponent},
   {path: 'gallery', component: GalleryComponent},
   {path: 'timeline', component: TimelineComponent},
-  {path: 'pricing', component: PricingComponent},
   {path: 'faq', component: FaqComponent},
   {path: 'invoice', component: InvoiceComponent},
   {path: 'blank-page', component: BlankPageComponent},

@@ -1,0 +1,69 @@
+<div class="breadcrumb-area">
+	<h1>Gestión de transportes</h1>
+</div>
+<div class="card">
+	<div class="card-header">
+		<h3>Transportes <a class="a-hover" (click)="show.transport.showForm= true"><i class="fa fa-plus"></i></a></h3>
+	</div>
+	<div class="card-body">
+		<div class="input-group input-group-sm">
+			<label for="transport" class="input-group-text">Transporte</label>
+			<input type="text" name="transport" [(ngModel)]="filterTransport" (ngModelChange)="filter()"
+				placeholder="Filtra por placa" id="transport" class="form-control">
+		</div>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Placa</th>
+						<th>Tonelaje <span class="text-muted">kg</span></th>
+						<th>Sucursal</th>
+						<th>En Ruta</th>
+						<th>En Mantenimiento</th>
+						<th>Ubicacion</th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr *ngFor="let transport of filterTransports">
+						<td>{{transport.id_transport}}</td>
+						<td>{{transport.tonnage}}</td>
+						<td>{{getBranchName(transport.branch)}}</td>
+						<td><i [class.status-active]="transport.active" class="fa fa-circle status"></i></td>
+						<td><i (click)="paymentMaintenance(transport)" [class.status-active]="transport.maintenance" class="fa fa-screwdriver-wrench status"></i></td>
+						<td><a class="a-hover"><i class="fa fa-eye"></i></a></td>
+					</tr>
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<app-over [name]="'Crear transporte'" [showContent]="show.transport" (saveChanges)="saveTransport()">
+	<div class="input-group input-group-sm mb-2">
+		<label for="license-plate" class="input-group-text">Placa</label>
+		<input type="text" id="license-plate" [(ngModel)]="transport.id_transport" name="license-plate"
+			class="form-control">
+	</div>
+	<div class="input-group input-group-sm mb-2">
+		<label for="tonnage" class="input-group-text">Tonelaje <span class="text-muted">(kg)</span></label>
+		<input type="text" id="tonnage" name="tonnage" [(ngModel)]="transport.tonnage" class="form-control">
+	</div>
+	<div class="input-group input-group-sm mb-2">
+		<label for="branch" class="input-group-text">Sucursal</label>
+		<select name="branch" id="branch" [(ngModel)]="transport.branch" class="form-select">
+			<option value="0">Sin sucursal asignada</option>
+			<option *ngFor="let branch of branches" value="{{branch.id_branch}}">{{branch.name}}</option>
+		</select>
+	</div>
+</app-over>
+
+<app-over [name]="'Pago por mantenimiento del transporte'" [showContent]="show.payment" (saveChanges)="savePayment()">
+	<span>{{defaultDescription}}</span>
+	<div class="input-group input-group-sm mb-2">
+		<label for="amount" class="input-group-text">Cantidad</label>
+		<input type="number" [(ngModel)]="newPayment.amount" name="amount" id="amount" class="form-control">
+	</div>
+	<div class="input-group input-group-sm mb-2">
+		<label for="description" class="input-group-text">Descripcion</label>
+		<textarea name="description" [(ngModel)]="newPaymentSpecial.description" id="description" cols="30" rows="10" class="form-control"></textarea>
+	</div>
+</app-over>

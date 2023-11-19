@@ -1,0 +1,64 @@
+<!-- <div class="breadcrumb-area">
+	<h1>Crear nueva sucursal</h1>
+</div> -->
+<div class="card">
+	<div class="card-header">
+		<h1>Sucursales</h1>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr /> Listado de sucursales
+					<hr />
+				</span>
+				<div class="input-group">
+					<label for="search-branch" class="input-group-text">Busqueda</label>
+					<input type="text" id="search-branch" (ngModelChange)="filterBranch()" name="search-branch" [(ngModel)]="search" class="form-control">
+				</div>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>Nombre</th>
+								<th>Dirección</th>
+								<th>Locación</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let branchTemp of filterBranches">
+								<td>{{branchTemp.name}}</td>
+								<td>{{branchTemp.address}}</td>
+								<td>{{branchTemp.location.split(',')[0]+' - '+branchTemp.location.split(',')[1]}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Crear nueva sucursal
+					<hr />
+				</span>
+				<div class="input-group mt-3 mb-3">
+					<label for="branch-name" class="input-group-text">Nombre</label>
+					<input name="branch-name" id="branch-name" class="form-control" [(ngModel)]="name">
+				</div>
+				<div class="input-group mt-3 mb-3">
+					<label for="branch-address" class="input-group-text">Direccion</label>
+					<input name="branch-address" id="branch-address" class="form-control" [(ngModel)]="address">
+				</div>
+				<span class="title-hr">
+					<hr />Locacion
+					<hr />
+				</span>
+				<div id="map-container">
+
+				</div>
+				<button [disabled]="!name || !address || !marker" class="btn btn-primary" (click)="saveBranch()">
+					GUARDAR
+				</button>
+			</div>
+		</div>
+	</div>
+</div>

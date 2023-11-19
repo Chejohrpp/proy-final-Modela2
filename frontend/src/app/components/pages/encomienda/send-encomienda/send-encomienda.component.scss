@@ -18,8 +18,8 @@
 
 .relative-element {
 	border: none;
-	border-left: 4px solid black;
-	border-right: 4px solid black;
+	border-left: 4px solid #deaa87;
+	border-right: 4px solid #deaa87;
 	border-radius: 0;
 	background-color: transparent;
 	display: grid;
@@ -28,37 +28,38 @@
 
 .width {
 	position: absolute;
-	bottom: 4%;
-	left: -1%;
-	transform: rotate(32deg) skew(-30deg, 0deg);
-	width: 48%;
+	bottom: 8%;
+	left: -0.5%;
+	transform: rotate(30deg) skew(-27deg, 0deg);
+	width: 51%;
 	text-align: center;
 }
 
 .deep {
 	position: absolute;
-	bottom: 2%;
+	bottom: 9%;
 	right: -3%;
-	transform: rotate(-25deg) skew(35deg, 0deg);
-	width: 50%;
+	transform: rotate(-31deg) skew(30deg, 0deg);
+	width: 51%;
 	text-align: center;
 }
 
 .heigth {
 	position: absolute;
 	top: 50%;
-	right: -25%;
+	right: -21%;
 	transform: rotate(-90deg) skew(-30deg, 0deg);
-	width: 50%;
+	width: 43%;
 	text-align: center;
 }
 
 .heigth input {
 	transform: rotate(90deg);
+	width: 90%;
 }
 
 .dashed {
-	border-bottom: 3px dashed gray;
+	border-bottom: 3px dashed #deaa8788;
 	height: 50%;
 }
 

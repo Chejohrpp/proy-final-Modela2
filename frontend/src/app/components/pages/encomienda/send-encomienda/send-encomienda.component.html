@@ -44,7 +44,7 @@
 					<input type="number" id="weight" name="weight" class="form-control">
 				</div>
 				<div class="relative">
-					<img src="../../../../assets/img/cube.png" alt="">
+					<img src="../../../../assets/img/cubev1.png" alt="">
 					<div class="relative-element width">
 						<div class="dashed"></div>
 						<input type="number" id="x-axis" name="x-axis" class="form-control axis">
@@ -70,7 +70,9 @@
 				</span>
 				<div class="input-group mt-3 mb-3">
 					<label for="branch-destiny" class="input-group-text">Destino</label>
-					<select name="branch-destiny" id="branch-destiny" class="form-select"></select>
+					<select name="branch-destiny" id="branch-destiny" class="form-select" (change)="changeMarker($event)" [(ngModel)]="branch">
+						<option *ngFor="let branch of listBranch" value="{{branch.id_branch}}">{{branch.name}}</option>
+					</select>
 				</div>
 				<div id="map-container">
 
