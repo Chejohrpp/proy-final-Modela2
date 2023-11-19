@@ -21,4 +21,12 @@ export class MainService {
   createEmployee(employee:any): Observable<any>{
     return this.http.post(`${this.BASE_URL}/createEmployee`,employee)
   }
+
+  createExpense(expense:any): Observable<any>{
+    return this.http.post(`${this.BASE_URL}/insertExpense`,expense)
+  }
+  
+  getPaymentExpenseByTypeCurrentMoth(data:string): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getPaymentExpenseByTypeCurrentMoth/${data}`)
+  }
 }

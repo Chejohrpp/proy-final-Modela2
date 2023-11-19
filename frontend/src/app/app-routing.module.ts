@@ -94,6 +94,7 @@ import { BranchExpensesEncomiendaComponent } from './components/pages/branch-exp
 import { MonthlyGoalsEncomiendaComponent } from './components/pages/monthly-goals-encomienda/monthly-goals-encomienda.component';
 import { SurplusEncomiendaComponent } from './components/pages/surplus-encomienda/surplus-encomienda.component';
 import { SpecialExpensesEncomiendaComponent } from './components/pages/special-expenses-encomienda/special-expenses-encomienda.component';
+import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-gestion/create-expense-encomienda/create-expense-encomienda.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -121,6 +122,7 @@ const routes: Routes = [
       {path: 'create-employer', data: { breadcrumb: 'Crear empleado' }, component: CreateEmployeeEncomiendaComponent},
       {path: 'report', data: { breadcrumb: 'Visualizar reportes' }, component: ReportsEncomiendaComponent},
       {path: 'honorarium', data: { breadcrumb: 'tabla de honorarios' }, component: HonorariumTableEncomiendaComponent},
+      {path: 'create-expense', data: { breadcrumb: 'crear un nuevo gasto' }, component: CreateExpenseEncomiendaComponent},
     ]
   },
   {path: 'branch-expenses', component: BranchExpensesEncomiendaComponent},

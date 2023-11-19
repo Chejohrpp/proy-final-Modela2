@@ -89,6 +89,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Payment` (
   `amount` DECIMAL(10,2) NOT NULL,
   `type` VARCHAR(45) NOT NULL,
   `date` DATE NOT NULL,
+  `description` VARCHAR(500) NULL,
   PRIMARY KEY (`id_payment`))
 ENGINE = InnoDB;
 

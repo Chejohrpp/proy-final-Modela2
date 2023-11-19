@@ -161,6 +161,7 @@ import { SurplusGenericComponent } from './components/pages/surplus-encomienda/s
 import { MainService } from './services/main.service';
 import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
+import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-gestion/create-expense-encomienda/create-expense-encomienda.component';
 
 @NgModule({
   declarations: [
@@ -320,6 +321,7 @@ import { FormsModule } from '@angular/forms';
     SurplusEncomiendaComponent,
     SurplusGlobalComponent,
     SurplusGenericComponent,
+    CreateExpenseEncomiendaComponent,
   ],
   imports: [
     BrowserModule,
