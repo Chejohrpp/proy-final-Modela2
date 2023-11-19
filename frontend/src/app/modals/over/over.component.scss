@@ -1,0 +1,24 @@
+.over-background{
+	position: fixed;
+	top: 0;
+	left: 0;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	background-color: rgba(0, 0, 0, 0.501);
+	backdrop-filter: blur(1px);
+	align-items: center;
+	width: 100%;
+	height: 100%;
+	z-index: 100000;
+}
+
+.over-content {
+	background-color: white;
+	border-radius: 1em;
+}
+
+.card-footer {
+	display: flex;
+    justify-content: space-between;
+}

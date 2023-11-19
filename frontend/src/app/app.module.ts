@@ -1,6 +1,5 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from './components/layouts/header/header.component';
@@ -12,7 +11,6 @@ import { EcommerceComponent } from './components/pages/dashboard/ecommerce/ecomm
 import { AppChatComponent } from './components/pages/app-chat/app-chat.component';
 import { AppTodoComponent } from './components/pages/app-todo/app-todo.component';
 import { AppCalendarComponent } from './components/pages/app-calendar/app-calendar.component';
-import { PricingComponent } from './components/pages/pricing/pricing.component';
 import { TimelineComponent } from './components/pages/timeline/timeline.component';
 import { GalleryComponent } from './components/pages/gallery/gallery.component';
 import { FaqComponent } from './components/pages/faq/faq.component';
@@ -34,38 +32,6 @@ import { FormInputGroupComponent } from './components/pages/forms/form-input-gro
 import { TableComponent } from './components/pages/table/table/table.component';
 import { TableLightComponent } from './components/pages/table/table-light/table-light.component';
 import { TableDarkComponent } from './components/pages/table/table-dark/table-dark.component';
-import { InboxComponent } from './components/pages/app-email/inbox/inbox.component';
-import { ReadComponent } from './components/pages/app-email/read/read.component';
-import { ComposeComponent } from './components/pages/app-email/compose/compose.component';
-import { UiComponentsComponent } from './components/pages/ui-components/ui-components/ui-components.component';
-import { AlertsComponent } from './components/pages/ui-components/alerts/alerts.component';
-import { AppEmailComponent } from './components/pages/app-email/app-email/app-email.component';
-import { BadgesComponent } from './components/pages/ui-components/badges/badges.component';
-import { BordersComponent } from './components/pages/ui-components/borders/borders.component';
-import { BreadcrumbComponent } from './components/pages/ui-components/breadcrumb/breadcrumb.component';
-import { ButtonsComponent } from './components/pages/ui-components/buttons/buttons.component';
-import { ButtonsGroupComponent } from './components/pages/ui-components/buttons-group/buttons-group.component';
-import { SliderComponent } from './components/pages/ui-components/slider/slider.component';
-import { CollapseComponent } from './components/pages/ui-components/collapse/collapse.component';
-import { DisplayComponent } from './components/pages/ui-components/display/display.component';
-import { DropdownComponent } from './components/pages/ui-components/dropdown/dropdown.component';
-import { EmbedComponent } from './components/pages/ui-components/embed/embed.component';
-import { FiguresComponent } from './components/pages/ui-components/figures/figures.component';
-import { ImagesComponent } from './components/pages/ui-components/images/images.component';
-import { JumbotronComponent } from './components/pages/ui-components/jumbotron/jumbotron.component';
-import { ListGroupComponent } from './components/pages/ui-components/list-group/list-group.component';
-import { MediaObjectComponent } from './components/pages/ui-components/media-object/media-object.component';
-import { ModalComponent } from './components/pages/ui-components/modal/modal.component';
-import { NavsComponent } from './components/pages/ui-components/navs/navs.component';
-import { NavbarComponent } from './components/pages/ui-components/navbar/navbar.component';
-import { PaginationComponent } from './components/pages/ui-components/pagination/pagination.component';
-import { SpinnerComponent } from './components/pages/ui-components/spinner/spinner.component';
-import { TextComponent } from './components/pages/ui-components/text/text.component';
-import { VerticalAlignmentComponent } from './components/pages/ui-components/vertical-alignment/vertical-alignment.component';
-import { TypographyComponent } from './components/pages/ui-components/typography/typography.component';
-import { TooltipsComponent } from './components/pages/ui-components/tooltips/tooltips.component';
-import { PopoversComponent } from './components/pages/ui-components/popovers/popovers.component';
-import { ProgressComponent } from './components/pages/ui-components/progress/progress.component';
 import { AuthenticationComponent } from './components/pages/authentication/authentication/authentication.component';
 import { LoginComponent } from './components/pages/authentication/login/login.component';
 import { LoginWithImageComponent } from './components/pages/authentication/login-with-image/login-with-image.component';
@@ -159,9 +125,21 @@ import { SurplusEncomiendaComponent } from './components/pages/surplus-encomiend
 import { SurplusGlobalComponent } from './components/pages/surplus-encomienda/surplus-global/surplus-global.component';
 import { SurplusGenericComponent } from './components/pages/surplus-encomienda/surplus-generic/surplus-generic.component';
 import { MainService } from './services/main.service';
-import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
 import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-gestion/create-expense-encomienda/create-expense-encomienda.component';
+import { EncomiendaComponent } from './components/pages/encomienda/encomienda.component';
+import { StatusEncomiendaComponent } from './components/pages/encomienda/status-encomienda/status-encomienda.component';
+import { SendEncomiendaComponent } from './components/pages/encomienda/send-encomienda/send-encomienda.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { PriceEncomiendaComponent } from './components/pages/encomienda/price-encomienda/price-encomienda.component';
+import { BranchComponent } from './components/pages/branch/branch/branch.component';
+import { NewBranchComponent } from './components/pages/branch/new-branch/new-branch.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { RoutesComponent } from './components/pages/routes/routes.component';
+import { TransportComponent } from './components/pages/routes/transport/transport.component';
+import { OverComponent } from './modals/over/over.component';
+import { ToastrModule } from 'ngx-toastr';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
 
 @NgModule({
   declarations: [
@@ -175,7 +153,6 @@ import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-
     AppChatComponent,
     AppTodoComponent,
     AppCalendarComponent,
-    PricingComponent,
     TimelineComponent,
     GalleryComponent,
     FaqComponent,
@@ -197,38 +174,6 @@ import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-
     TableComponent,
     TableLightComponent,
     TableDarkComponent,
-    InboxComponent,
-    ReadComponent,
-    ComposeComponent,
-    UiComponentsComponent,
-    AlertsComponent,
-    AppEmailComponent,
-    BadgesComponent,
-    BordersComponent,
-    BreadcrumbComponent,
-    ButtonsComponent,
-    ButtonsGroupComponent,
-    SliderComponent,
-    CollapseComponent,
-    DisplayComponent,
-    DropdownComponent,
-    EmbedComponent,
-    FiguresComponent,
-    ImagesComponent,
-    JumbotronComponent,
-    ListGroupComponent,
-    MediaObjectComponent,
-    ModalComponent,
-    NavsComponent,
-    NavbarComponent,
-    PaginationComponent,
-    SpinnerComponent,
-    TextComponent,
-    VerticalAlignmentComponent,
-    TypographyComponent,
-    TooltipsComponent,
-    PopoversComponent,
-    ProgressComponent,
     AuthenticationComponent,
     LoginComponent,
     LoginWithImageComponent,
@@ -322,12 +267,25 @@ import { CreateExpenseEncomiendaComponent } from './components/pages/encomienda-
     SurplusGlobalComponent,
     SurplusGenericComponent,
     CreateExpenseEncomiendaComponent,
+    EncomiendaComponent,
+    StatusEncomiendaComponent,
+    SendEncomiendaComponent,
+    PriceEncomiendaComponent,
+    BranchComponent,
+    NewBranchComponent,
+    RoutesComponent,
+    TransportComponent,
+    OverComponent,
+    NewRouteComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    ReactiveFormsModule,
+    FormsModule,
     HttpClientModule,
-    FormsModule
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [MainService],
   bootstrap: [AppComponent]

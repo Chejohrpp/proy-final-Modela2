@@ -1,0 +1,153 @@
+#map-container {
+	background-color: red;
+	height: 500px;
+	width: 100%;
+}
+
+.relative {
+	position: relative;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 2.5rem;
+}
+
+.relative img {
+	width: 100%;
+}
+
+.relative-element {
+	border: none;
+	border-left: 4px solid #deaa87;
+	border-right: 4px solid #deaa87;
+	border-radius: 0;
+	background-color: transparent;
+	display: grid;
+	grid-template-columns: 33% 34% 33%;
+}
+
+.width {
+	position: absolute;
+	bottom: 8%;
+	left: -0.5%;
+	transform: rotate(30deg) skew(-27deg, 0deg);
+	width: 51%;
+	text-align: center;
+}
+
+.deep {
+	position: absolute;
+	bottom: 9%;
+	right: -3%;
+	transform: rotate(-31deg) skew(30deg, 0deg);
+	width: 51%;
+	text-align: center;
+}
+
+.heigth {
+	position: absolute;
+	top: 50%;
+	right: -21%;
+	transform: rotate(-90deg) skew(-30deg, 0deg);
+	width: 43%;
+	text-align: center;
+}
+
+.heigth input {
+	transform: rotate(90deg);
+	width: 90%;
+}
+
+.dashed {
+	border-bottom: 3px dashed #deaa8788;
+	height: 50%;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+}
+
+.axis{
+	text-align: center;
+	font-size: 0.9em;
+	padding-left: 1px;
+	padding-right: 1px;
+}
+
+.title-hr hr {
+	display: inline-block;
+	width: 45%;
+	margin: 5px 10px;
+}
+
+.title-hr {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	justify-content: center;
+	align-items: center;
+	font-size: 1.2em;
+	font-weight: 600;
+}
+
+.route {
+	display: flex;
+	overflow-x: scroll;
+}
+
+.branch-name {
+	font-weight: 900;
+	max-width: 90px;
+}
+
+.branch-representation {
+	height: 90px;
+	width: 90px;
+	border-radius: 50%;
+	border: 5px solid gray;
+	display: flex;
+	color: gray;
+    justify-content: center;
+    align-items: center;
+    font-size: 3em;
+}
+
+.passed {
+	color: green !important;
+	border-color: green !important;
+}
+
+.active {
+	color: skyblue !important;
+	border-color: skyblue !important;
+}
+
+.branch {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	align-content: center;
+	gap: 0.5rem;
+}
+
+.connector {
+	min-width: 130px;
+	display: grid;
+	grid-template-columns: 33% 34% 33%;
+	flex-direction: column;
+	justify-content: center;
+}
+
+.line-connector {
+	border-bottom: 8px solid gray;
+	height: 60%;
+}
+
+.text-connector {
+	display: flex;
+	flex-direction: column;
+	align-content: center;
+	justify-content: center;
+	align-items: center;
+}

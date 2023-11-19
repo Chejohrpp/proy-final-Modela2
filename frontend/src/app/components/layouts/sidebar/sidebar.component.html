@@ -2,8 +2,8 @@
 <div class="sidemenu-area">
     <div class="sidemenu-header">
         <a href="/dashboard/analytics" class="navbar-brand d-flex align-items-center">
-            <img src="assets/img/small-logo.png" alt="image">
-            <span>Fiva</span>
+            <img class="brand-image" src="assets/img/logo.svg" alt="image">
+            <span>Encomienda</span>
         </a>
 
         <div class="burger-menu d-none d-lg-block">
@@ -22,10 +22,29 @@
     <div class="sidemenu-body">
         <ul class="sidemenu-nav metisMenu h-100" id="sidemenu-nav" data-simplebar>
             <li class="nav-item-title">
+                Dashboard
+            </li>
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bxs-package'></i></span>
+                    <span class="menu-title">Reportes</span>
+                    <span class="badge">1</span>
+                </a>
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/" class="nav-link">
+                            <span class="icon"><i class='fa fa-truck-fast'></i></span>
+                            <span class="menu-title">Transportes</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+
+            <li class="nav-item-title">
                 Main
             </li>
 
-            <li class="nav-item" routerLinkActive="active mm-active">
+            <!-- <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-home-circle'></i></span>
                     <span class="menu-title">Dashboard</span>
@@ -47,8 +66,76 @@
                         </a>
                     </li>
                 </ul>
+            </li> -->
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='bx bxs-package'></i></span>
+                    <span class="menu-title">Encomienda</span>
+                    <span class="badge">3</span>
+                </a>
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/encomienda/send" class="nav-link">
+                            <span class="icon"><i class='fa fa-truck-fast'></i></span>
+                            <span class="menu-title">Enviar encomienda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/encomienda/status" class="nav-link">
+                            <span class="icon"><i class='fa fa-map-location-dot'></i></span>
+                            <span class="menu-title">Estado de encomienda</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/encomienda/price" class="nav-link">
+                            <span class="icon"><i class='fa fa-tag'></i></span>
+                            <span class="menu-title">Tarifario</span>
+                        </a>
+                    </li>
+                </ul>
             </li>
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='fa fa-building'></i></span>
+                    <span class="menu-title">Sucursal</span>
+                    <span class="badge">2</span>
+                </a>
 
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/branch/new" class="nav-link">
+                            <span class="icon"><i class='fa fa-building'></i></span>
+                            <span class="menu-title">Crear sucursal</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li class="nav-item" routerLinkActive="active mm-active">
+                <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
+                    <span class="icon"><i class='fa fa-route'></i></span>
+                    <span class="menu-title">Rutas</span>
+                    <span class="badge">2</span>
+                </a>
+
+                <ul class="sidemenu-nav-second-level">
+                    <li class="nav-item" routerLinkActive="active">
+                        <a routerLink="/routes/transport" class="nav-link">
+                            <span class="icon">
+                                <i class="fa fa-truck-moving"></i>
+                            </span>
+                            <span class="menu-title">Gestión de transportes</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" routerLinkActive="active">
+                        <a href="/routes/new" class="nav-link">
+                            <span class="icon">
+                                <i class="fa fa-map-location-dot"></i>
+                            </span>
+                            <span class="menu-title">Gestión de rutas</span>
+                        </a>
+                    </li>
+                </ul>
+            </li><!-- 
             <li class="nav-item-title">
                 Apps
             </li>
@@ -103,7 +190,7 @@
                     <span class="icon"><i class='bx bx-calendar'></i></span>
                     <span class="menu-title">Calendar</span>
                 </a>
-            </li>
+            </li> -->
 
             <li class="nav-item-title">
                 Gestion de la organizacion
@@ -169,7 +256,7 @@
                 </a>
             </li>
 
-
+<!-- 
             <li class="nav-item-title">
                 UI Elements
             </li>
@@ -523,7 +610,7 @@
                     <span class="menu-title">Blank Page</span>
                 </a>
             </li>
-            
+
             <li class="nav-item" routerLinkActive="active mm-active">
                 <a href="#" class="collapsed-nav-link nav-link" aria-expanded="false">
                     <span class="icon"><i class='bx bx-lock-open'></i></span>
@@ -791,7 +878,7 @@
                     <span class="icon"><i class='bx bx-support'></i></span>
                     <span class="menu-title">Support</span>
                 </a>
-            </li>
+            </li> -->
         </ul>
     </div>
 </div>

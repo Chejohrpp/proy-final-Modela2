@@ -1,0 +1,16 @@
+<div class="over-background" [hidden]="!showContent.showForm">
+	<div class="over-content">
+		<div class="card">
+			<div class="card-header">
+				<h1>{{name}}</h1>
+			</div>
+			<div class="card-body">
+				<ng-content></ng-content>
+			</div>
+			<div class="card-footer">
+				<button class="btn btn-danger" (click)="hide()"><i class="fa fa-xmark"></i></button>
+				<button class="btn btn-success" (click)="saveChanges.emit()"><i class="fa fa-check"></i></button>
+			</div>
+		</div>
+	</div>
+</div>
