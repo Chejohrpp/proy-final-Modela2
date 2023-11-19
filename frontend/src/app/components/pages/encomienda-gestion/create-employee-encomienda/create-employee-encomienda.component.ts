@@ -10,6 +10,8 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
   roles: any[] = [];
   branchs: any[] = [];
   salary: number = 0;
+  current_salary: number = 0;
+  salary_per_hour: number = 0;
   selectedRoleId: number = 0;
   selectedBranchId: number = 0;
   employeeData = {
@@ -17,6 +19,7 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
     last_name: '',
     email: '',
     password: '',
+    hours: 8,
     role_assignment: 0, // Podrías establecer un valor predeterminado si es necesario
     payment_salary: 0 // Podrías establecer un valor predeterminado si es necesario
   };
@@ -54,6 +57,7 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
         } else {
           console.error('El objeto roles no tiene la estructura esperada');
           this.salary = null;
+          this.current_salary = null;
         }
       },
       error => {
@@ -66,10 +70,21 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
     const selectedRole = this.roles.find(role => role.id_role === Number(this.selectedRoleId));
     if (selectedRole) {
       this.salary = selectedRole.salary;
+      this.salary_per_hour = this.salary/8
       this.employeeData.role_assignment = selectedRole.id_ra
-      this.employeeData.payment_salary = selectedRole.salary
+      this.updateCurrentSalary();
     } else {
       this.salary = 0; // Valor por defecto si no se encuentra el rol seleccionado
+      this.current_salary = 0;
+    }
+  }
+
+  updateCurrentSalary(): void {
+    if (this.salary !== 0 ) {
+      this.current_salary = this.salary_per_hour * this.employeeData.hours;
+      this.employeeData.payment_salary = this.current_salary
+    }else {
+      this.current_salary = 0;
     }
   }
 
@@ -91,5 +106,7 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
       }
     );
   }
+
+  
 
 }

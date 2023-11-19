@@ -33,8 +33,7 @@ export const createEmployee = async (req, res) => {
         first_name: req.body.first_name,
         last_name: req.body.last_name,
         role_assignment: req.body.role_assignment,
-        // hours: req.body.hours,
-        hours: 8,
+        hours: req.body.hours,
         branch: req.body.branch, 
         payment_salary: req.body.payment_salary
     }
