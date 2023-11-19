@@ -29,4 +29,14 @@ export class MainService {
   getPaymentExpenseByTypeCurrentMoth(data:string): Observable<any>{
     return this.http.get(`${this.BASE_URL}/getPaymentExpenseByTypeCurrentMoth/${data}`)
   }
+
+  totalBranchExpensesMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/totalBranchExpensesMonth/`)
+  }
+
+  totalSpecialsExpensesMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/totalSpecialsExpensesMonth/`)
+  }
+
+
 }
