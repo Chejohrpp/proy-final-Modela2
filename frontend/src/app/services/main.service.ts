@@ -37,6 +37,26 @@ export class MainService {
   totalSpecialsExpensesMonth(): Observable<any>{
     return this.http.get(`${this.BASE_URL}/totalSpecialsExpensesMonth/`)
   }
+  
+  calculateBudgetVsExpenses(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/calculateBudgetVsExpenses/`)
+  }
+
+  getNewShipmentsThisMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getNewShipmentsThisMonth/`)
+  }
+
+  getEarningsThisMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getEarningsThisMonth/`)
+  }
+
+  getDeliveredShipmentsThisMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getDeliveredShipmentsThisMonth/`)
+  }
+
+  getTotalExtraHoursThisMonth(): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getTotalExtraHoursThisMonth/`)
+  }
 
   getTableHonorarium(): Observable<any>{
     return this.http.get(`${this.BASE_URL}/getTableHonorarium/`)

@@ -139,6 +139,7 @@ CREATE TABLE IF NOT EXISTS `encomienda`.`Shipment` (
   `max_time` INT NOT NULL,
   `payment` DECIMAL(10,2) NOT NULL,
   `status` TINYINT NOT NULL DEFAULT 0,
+  `date` DATE NOT NULL,
   PRIMARY KEY (`id_shipment`),
   INDEX `FK_S_BORIGIN_idx` (`origin` ASC) ,
   INDEX `FK_S_DESTINY_idx` (`destiny` ASC) ,

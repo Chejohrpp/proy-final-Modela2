@@ -7,8 +7,15 @@ import { MainService } from 'src/app/services/main.service';
   styleUrls: ['./monthly-goals-encomienda.component.scss']
 })
 export class MonthlyGoalsEncomiendaComponent implements OnInit {
-  currentbranchExpenses: number = 0;
-  currentbranchSpecial: number = 0;
+  currentbranchExpenses: any = null;
+  currentbranchSpecial: any = null;
+  currentsurplus: any = null;
+
+  getNewShipmentsThisMonth: any = null;
+  getEarningsThisMonth: any = null;
+  getDeliveredShipmentsThisMonth: any = null;
+  getTotalExtraHoursThisMonth: any = null;
+
 
   constructor(private mainService: MainService) {}
 
@@ -23,7 +30,7 @@ export class MonthlyGoalsEncomiendaComponent implements OnInit {
           (item) => item.month === currentMonth && item.year === currentYear
         );
         if (currentMonthYearExpenses) {
-          this.currentbranchExpenses = parseFloat(currentMonthYearExpenses.total_operating_expenses);
+          this.currentbranchExpenses = this.formatNumber(parseFloat(currentMonthYearExpenses.total_operating_expenses));
         }
       },
       (error) => {
@@ -37,12 +44,71 @@ export class MonthlyGoalsEncomiendaComponent implements OnInit {
           (item) => item.month === currentMonth && item.year === currentYear
         );
         if (currentMonthYearSpecials) {
-          this.currentbranchSpecial = parseFloat(currentMonthYearSpecials.total_special_expenses);
+          this.currentbranchSpecial = this.formatNumber(parseFloat(currentMonthYearSpecials.total_special_expenses));
         }
       },
       (error) => {
         console.error(error);
       }
     );
+
+    this.mainService.calculateBudgetVsExpenses().subscribe(
+      (data: any) => {
+        this.currentsurplus = this.formatNumber(data);
+      }
+    )
+
+    this.mainService.getNewShipmentsThisMonth().subscribe(
+      (data: any) => {
+        this.getNewShipmentsThisMonth = this.formatNumber(data)
+      }
+    )
+
+    this.mainService.getEarningsThisMonth().subscribe(
+      (data: any) => {
+        this.getEarningsThisMonth = this.formatNumber(data);
+      },
+      (error: any) => {
+        console.error(error);
+        // Manejar el error si es necesario
+      }
+    );
+
+    this.mainService.getDeliveredShipmentsThisMonth().subscribe(
+      (data: any) => {
+        this.getDeliveredShipmentsThisMonth = this.formatNumber(data);
+      },
+      (error: any) => {
+        console.error(error);
+        // Manejar el error si es necesario
+      }
+    );
+
+    this.mainService.getTotalExtraHoursThisMonth().subscribe(
+      (data: any) => {
+        this.getTotalExtraHoursThisMonth = this.formatNumber(data);
+      },
+      (error: any) => {
+        console.error(error);
+        // Manejar el error si es necesario
+      }
+    );
+
   }
+
+  formatNumber(value: number): string {
+    if (value === null || isNaN(value) || value === 0) {
+      return '0';
+    }
+  
+    const suffixes = ['', 'K', 'M']; // Escalas numéricas
+    const sign = value < 0 ? '-' : ''; // Verifica si es negativo
+    const absValue = Math.abs(value);
+  
+    const suffixNum = Math.floor(Math.log10(absValue) / 3); // Identifica la escala numérica
+    const shortValue = (absValue / Math.pow(1000, suffixNum)).toFixed(1);
+  
+    return sign + shortValue + suffixes[suffixNum];
+  }
+  
 }

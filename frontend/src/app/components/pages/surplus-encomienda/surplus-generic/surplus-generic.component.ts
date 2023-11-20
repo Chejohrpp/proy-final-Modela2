@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { MainService } from 'src/app/services/main.service';
 
 @Component({
   selector: 'app-surplus-generic',
@@ -6,58 +7,56 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./surplus-generic.component.scss']
 })
 export class SurplusGenericComponent implements OnInit {
+    total_surplus:any = 0;
+    constructor(private mainService: MainService) { }
 
-  constructor() {};
+    ngOnInit() {
+        this.mainService.getPaymentExpenseByTypeCurrentMoth('surplus').subscribe(
+            (data: any[]) => {
+                // Obtener la lista de descripciones (labels)
+                const labels = data.map(item => item.description);
+                // Obtener la lista de montos (amounts)
+                const series = data.map(item => parseFloat(item.amount)); // Convertir a número si es necesario
+                // Sumar todos los valores del arreglo "series" usando reduce
+                // Sumar todos los valores del arreglo "series" usando reduce y luego formatear a 2 decimales
+                this.total_surplus = +series.reduce((acc, curr) => acc + curr, 0).toFixed(2);
+                this.makechart(labels, series);
+            },
+            error => {
+                console.error(error);
+            }
+        );
+    }
 
-  ngOnInit() {
-    const options = {
-        chart: {
-            height: 350,
-            type: 'radialBar',
-            offsetY: -10
-        },
-        plotOptions: {
-            radialBar: {
-                startAngle: -135,
-                endAngle: 135,
-                dataLabels: {
-                    name: {
-                        fontSize: '16px',
-                        color: undefined,
-                        offsetY: 120
+    makechart(labels, series): void {
+        const options = {
+            chart: {
+                width: '100%',
+                height: 430,
+                type: 'pie',
+            },
+            labels: labels,
+            series: series,
+            responsive: [{
+                breakpoint: 480,
+                options: {
+                    chart: {
+                        width: 200
                     },
-                    value: {
-                        offsetY: 76,
-                        fontSize: '22px',
-                        color: undefined,
-                        formatter: function (val) {
-                            return val + "%";
-                        }
+                    legend: {
+                        position: 'bottom'
                     }
                 }
+            }],
+            legend: {
+                horizontalAlign: 'right',
             }
-        },
-        fill: {
-            type: 'gradient',
-            gradient: {
-                shade: 'dark',
-                shadeIntensity: 0.15,
-                inverseColors: false,
-                opacityFrom: 1,
-                opacityTo: 1,
-                stops: [0, 50, 65, 91]
-            },
-        },
-        stroke: {
-            dashArray: 4
-        },
-        series: [67],
-        labels: ['Median Ratio'],
+        }
+        const chart = new ApexCharts(
+            document.querySelector("#excedente-generico"),
+            options
+        );
+        chart.render();
     }
-    const chart = new ApexCharts(
-        document.querySelector("#excedente-generico-radialbar"),
-        options
-    );
-    chart.render();
-}
+
 }
