@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -17,7 +18,7 @@ export class CreateHonorariumEncomiendaComponent implements OnInit {
   full_name = '';
   employees: any[] = [];
 
-  constructor(private mainService: MainService) {}
+  constructor(private mainService: MainService,private toastService: ToastrService) {}
 
   ngOnInit(): void {
     this.mainService.getemployeesSalary().subscribe(
@@ -54,10 +55,12 @@ export class CreateHonorariumEncomiendaComponent implements OnInit {
       this.mainService.inserthonorarium(this.honorarioData).subscribe(
         () => {
           // Muestra un mensaje de éxito
-          console.log('Honorarium added successfully');
+          // console.log('Honorarium added successfully');
+          this.toastService.success('Honorario agregado con exito')
         },
         error => {
-          console.error('Error adding honorarium:', error);
+          // console.error('Error adding honorarium:', error);
+          this.toastService.error('Error en el servidor, vuelve a intentarlo');
         }
       );
     }

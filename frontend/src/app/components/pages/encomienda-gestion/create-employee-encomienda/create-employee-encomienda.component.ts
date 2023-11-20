@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { MainService } from 'src/app/services/main.service';
 
 @Component({
@@ -24,7 +25,7 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
     payment_salary: 0 // Podrías establecer un valor predeterminado si es necesario
   };
 
-  constructor(private mainService: MainService) {}
+  constructor(private mainService: MainService, private toastService: ToastrService) {}
 
   ngOnInit(): void {
     this.updateBranch();
@@ -98,11 +99,11 @@ export class CreateEmployeeEncomiendaComponent implements OnInit {
     this.mainService.createEmployee(this.employeeData).subscribe(
       (response) => {
         console.log('Empleado creado:', response);
-        // Restablecer el formulario o tomar otras acciones después de crear el empleado
+        this.toastService.success(response.message);
       },
       (error) => {
         console.error('Error al crear el empleado:', error);
-        // Manejar el error aquí
+        this.toastService.error('Error en el servidor, vuelve a intentarlo');
       }
     );
   }
