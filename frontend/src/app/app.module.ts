@@ -143,6 +143,7 @@ import { NewRouteComponent } from './components/pages/routes/new-route/new-route
 import { CreateHonorariumEncomiendaComponent } from './components/pages/encomienda-gestion/create-honorarium-encomienda/create-honorarium-encomienda.component';
 import { CreateRoleComponent } from './components/pages/encomienda-gestion/create-role/create-role.component';
 import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/create-rol-branch/create-rol-branch.component';
+import { BudgetComponent } from './components/pages/encomienda-gestion/budget/budget.component';
 
 @NgModule({
   declarations: [
@@ -283,6 +284,7 @@ import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/
     CreateHonorariumEncomiendaComponent,
     CreateRoleComponent,
     CreateRolBranchComponent,
+    BudgetComponent,
   ],
   imports: [
     BrowserModule,

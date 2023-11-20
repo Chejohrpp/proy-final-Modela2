@@ -74,6 +74,7 @@ import { NewRouteComponent } from './components/pages/routes/new-route/new-route
 import { CreateHonorariumEncomiendaComponent } from './components/pages/encomienda-gestion/create-honorarium-encomienda/create-honorarium-encomienda.component';
 import { CreateRoleComponent } from './components/pages/encomienda-gestion/create-role/create-role.component';
 import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/create-rol-branch/create-rol-branch.component';
+import { BudgetComponent } from './components/pages/encomienda-gestion/budget/budget.component';
 
 const routes: Routes = [
   {path: '', component: AnalyticsComponent},
@@ -112,6 +113,7 @@ const routes: Routes = [
       {path: 'create-honorarium', data: { breadcrumb: 'crear un nuevo honorario' }, component: CreateHonorariumEncomiendaComponent},
       {path: 'create-rol', data: { breadcrumb: 'crear un nuevo rol' }, component: CreateRoleComponent},
       {path: 'create-rol-branch', data: { breadcrumb: 'Asignar salario a una sucursal de rol' }, component: CreateRolBranchComponent},
+      {path: 'budget', data: { breadcrumb: 'El presupuesto' }, component: BudgetComponent},
     ]
   },
   {path: 'branch-expenses', component: BranchExpensesEncomiendaComponent},

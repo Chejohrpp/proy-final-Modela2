@@ -9,6 +9,7 @@ import { dashboardRoutes } from './routes/organization-routes/dashboard.routes.j
 import { branchRoutes } from './routes/branch.js';
 import { honorarioRoutes } from './routes/organization-routes/honorarium.routes.js';
 import { miscellaneousRoutes } from './routes/organization-routes/miscellaneous.routes.js';
+import { budgetRoutes } from './routes/organization-routes/budget.routes.js';
 
 db.connectDB();
 
@@ -32,6 +33,7 @@ app.use('/api', expenseRoutes);
 app.use('/api', dashboardRoutes);
 app.use('/api', honorarioRoutes);
 app.use('/api', miscellaneousRoutes);
+app.use('/api/budget', budgetRoutes);
 app.use('/branch', branchRoutes);
 
 export { app }

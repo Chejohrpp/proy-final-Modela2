@@ -1,0 +1,47 @@
+<div class="card mb-4">
+    <div class="card-body">
+      <div class="card-header">
+        <h3>Presupuesto</h3>
+      </div>
+      <select class="form-select form-item-create-employer" (change)="selectBudget($event.target.value)">
+        <option value="" selected>Selecciona un mes-año</option>
+        <option *ngFor="let budget of budgets" [value]="budget.month_year">{{ budget.month_year }}</option>
+      </select>
+      <div class="form-item-create-employer" *ngIf="selectedBudget">
+        <div class="form-group col form-item-create-employer">
+          <label for="inputState">Cantidad</label>
+          <div class="input-group col-md-2 form-item-create-employer">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="basic-addon1">Q.</span>
+            </div>
+            <input type="number" class="form-control" id="amount" [(ngModel)]="selectedBudget.amount"
+              name="amount" value={{selectedBudget.amount}}>
+          </div>
+        </div>
+        <button class="btn btn-primary" (click)="submitForm()">Modificar</button>
+      </div>
+      <div *ngIf="!selectedBudget">
+        <button class="btn btn-primary" (click)="toggleInsertForm()">Agregar</button>
+      </div>
+    </div>
+  </div>
+  
+  <div class="card mb-4" *ngIf="showInsertForm && !selectedBudget">
+    <div class="card-body">
+      <div class="card-header">
+        <h3>Insertar un Presupuesto</h3>
+      </div>
+      <form (ngSubmit)="insertBudget()">
+        <div class="form-group col-md-7 form-item-create-employer">
+          <label for="month_year">Mes-Año</label>
+          <input type="text" placeholder="Agregar mes-año" class="form-control" id="month_year" [(ngModel)]="newBudget.month_year" name="month_year">
+        </div>
+        <div class="form-group col-md-7 form-item-create-employer">
+          <label for="amount">Amount</label>
+          <input type="number" placeholder="Agregar amount" class="form-control" id="amount" [(ngModel)]="newBudget.amount" name="amount">
+        </div>
+        <button type="submit" class="btn btn-primary">Añadir presupuesto</button>
+      </form>
+    </div>
+  </div>
+  
