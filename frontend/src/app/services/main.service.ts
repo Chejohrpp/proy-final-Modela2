@@ -49,4 +49,16 @@ export class MainService {
   getemployeesSalary(): Observable<any>{
     return this.http.get(`${this.BASE_URL}/getemployeesSalary`)
   }
+  
+  getNotAssignmentSalaryByBranch(branch:any): Observable<any>{
+    return this.http.get(`${this.BASE_URL}/getNotAssignmentSalaryByBranch/${branch}`)
+  }
+  
+  createRole(role:any): Observable<any>{
+    return this.http.post(`${this.BASE_URL}/createRole`,role)
+  }
+  
+  createRoleBranch(rolebranch:any): Observable<any>{
+    return this.http.post(`${this.BASE_URL}/createRoleBranch`,rolebranch)
+  }
 }

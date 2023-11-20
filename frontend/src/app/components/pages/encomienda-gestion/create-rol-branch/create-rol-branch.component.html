@@ -1,0 +1,35 @@
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="card-header">
+            <h3>Asignar el salario a un rol de la sucursal</h3>
+        </div>
+        <form (ngSubmit)="submitForm()">
+            <div class="row">
+                <div class="form-group col form-item-create-employer">
+                  <label for="inputState">Rol</label>
+                  <select id="inputState" class="form-control" [(ngModel)]="selectedRoleId" name="selectedRoleId">
+                    <option *ngFor="let role of roles" [value]="role.id_role">{{ role.name }}</option>
+                  </select>
+                </div>
+                <div class="form-group col form-item-create-employer">
+                  <label for="inputState">Sucursal</label>
+                  <select id="inputState" class="form-control" [(ngModel)]="selectedBranchId" name="selectedBranchId"
+                    (change)="updateRoles()">
+                    <option *ngFor="let branch of branchs" [value]="branch.id_branch">{{ branch.name }}</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group col form-item-create-employer">
+                <label for="inputState">Salario Base de 8 horas</label>
+                <div class="input-group col-md-2 form-item-create-employer">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text" id="basic-addon1">Q.</span>
+                  </div>
+                  <input type="number" class="form-control" placeholder="salario base" id="salary" [(ngModel)]="rolBranchData.salary"
+                    name="salary" value={{rolBranchData.salary}}>
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary">Añadir Salario</button>
+        </form>
+    </div>
+</div>

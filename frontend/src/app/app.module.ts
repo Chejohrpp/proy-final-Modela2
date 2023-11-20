@@ -141,6 +141,8 @@ import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
 import { CreateHonorariumEncomiendaComponent } from './components/pages/encomienda-gestion/create-honorarium-encomienda/create-honorarium-encomienda.component';
+import { CreateRoleComponent } from './components/pages/encomienda-gestion/create-role/create-role.component';
+import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/create-rol-branch/create-rol-branch.component';
 
 @NgModule({
   declarations: [
@@ -279,6 +281,8 @@ import { CreateHonorariumEncomiendaComponent } from './components/pages/encomien
     OverComponent,
     NewRouteComponent,
     CreateHonorariumEncomiendaComponent,
+    CreateRoleComponent,
+    CreateRolBranchComponent,
   ],
   imports: [
     BrowserModule,

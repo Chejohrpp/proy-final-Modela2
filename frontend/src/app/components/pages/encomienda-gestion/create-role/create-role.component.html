@@ -1,0 +1,14 @@
+<div class="card mb-4">
+    <div class="card-body">
+        <div class="card-header">
+            <h3>Agregar un nuevo rol</h3>
+        </div>
+        <form (ngSubmit)="submitForm()">
+            <div class="form-group col-md-7 form-item-create-employer">
+                <label for="full_name">Nombre</label>
+                <input type="text" placeholder="Agregar nombre" class="form-control" id="name" [(ngModel)]="name" name="name">
+            </div>
+            <button type="submit" class="btn btn-primary">Añadir Rol</button>
+        </form>
+    </div>
+</div>
