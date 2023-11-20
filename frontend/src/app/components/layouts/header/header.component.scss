@@ -1,3 +1,7 @@
 .navbar-collapse{
 	justify-content: space-between;
 }
+
+.top-navbar.navbar .profile-nav-item.dropdown .dropdown-menu .dropdown-footer {
+	border-top: none !important;
+}

@@ -14,19 +14,19 @@
 			<div class="col-sm">
 				<div class="input-group">
 					<label for="client" class="input-group-text">Cliente</label>
-					<input type="text" id="client" name="client" class="form-control">
+					<input type="text" id="client" [(ngModel)]="encomienda.client" name="client" class="form-control">
 				</div>
 			</div>
 			<div class="col-sm">
 				<div class="input-group">
 					<label for="receiver" class="input-group-text">Receptor</label>
-					<input type="text" id="receiver" name="receiver" class="form-control">
+					<input type="text" id="receiver" [(ngModel)]="encomienda.receiver" name="receiver" class="form-control">
 				</div>
 			</div>
 			<div class="col-sm">
 				<div class="input-group">
 					<label for="priority" class="input-group-text">Prioridad</label>
-					<select name="priority" id="priority" class="form-select">
+					<select name="priority" id="priority" [(ngModel)]="encomienda.priority" class="form-select">
 						<option value="0">Por tiempo</option>
 						<option value="1">Por distancia</option>
 					</select>
@@ -41,23 +41,23 @@
 				</span>
 				<div class="input-group mt-3">
 					<label for="weight" class="input-group-text">Peso</label>
-					<input type="number" id="weight" name="weight" class="form-control">
+					<input type="number" id="weight" [(ngModel)]="encomienda.weight" name="weight" class="form-control">
 				</div>
 				<div class="relative">
 					<img src="../../../../assets/img/cubev1.png" alt="">
 					<div class="relative-element width">
 						<div class="dashed"></div>
-						<input type="number" id="x-axis" name="x-axis" class="form-control axis">
+						<input type="number" id="x-axis" [(ngModel)]="encomienda.x" name="x-axis" class="form-control axis">
 						<div class="dashed"></div>
 					</div>
 					<div class="relative-element deep">
 						<div class="dashed"></div>
-						<input type="number" id="z-axis" name="z-axis" class="form-control axis">
+						<input type="number" id="z-axis" [(ngModel)]="encomienda.z" name="z-axis" class="form-control axis">
 						<div class="dashed"></div>
 					</div>
 					<div class="relative-element heigth">
 						<div class="dashed"></div>
-						<input type="number" id="y-axis" name="y-axis" class="form-control axis">
+						<input type="number" id="y-axis" [(ngModel)]="encomienda.y" name="y-axis" class="form-control axis">
 						<div class="dashed"></div>
 					</div>
 				</div>
@@ -65,101 +65,94 @@
 			</div>
 			<div class="col-sm">
 				<span class="title-hr">
-					<hr />Datos Destino
+					<hr />Datos Ruta
 					<hr />
 				</span>
 				<div class="input-group mt-3 mb-3">
+					<label for="branch-destiny" class="input-group-text">Origen</label>
+					<select name="branch-destiny" disabled id="branch-destiny" class="form-select" [(ngModel)]="branchUser.id_branch">
+						<option *ngFor="let branch of listBranch" value="{{branch.id_branch}}">{{branch.name}}</option>
+					</select>
+				</div>
+				<div class="input-group mt-3 mb-3">
 					<label for="branch-destiny" class="input-group-text">Destino</label>
 					<select name="branch-destiny" id="branch-destiny" class="form-select" (change)="changeMarker($event)" [(ngModel)]="branch">
-						<option *ngFor="let branch of listBranch" value="{{branch.id_branch}}">{{branch.name}}</option>
+						<ng-container *ngFor="let branch of listBranch" >
+							<option *ngIf="branch.id_branch != branchUser.id_branch" value="{{branch.id_branch}}">{{branch.name}}</option>
+						</ng-container>
 					</select>
 				</div>
 				<div id="map-container">
 
 				</div>
 			</div>
-			<button class="btn btn-primary mt-3">
+			<button (click)="calculate()" class="btn btn-primary mt-3">
 				<i class="fa fa-calculator"></i>
 				CALCULAR COSTO
 			</button>
 		</div>
 	</div>
 </div>
-<div class="card mt-3">
+<div class="card mt-3" *ngIf="approximate.time != 0">
 	<div class="card-header">
 		<h3>Resultado del calculo del costo de la encomienda</h3>
 	</div>
 	<div class="card-body">
-		<span class="title-hr">
-			<hr />Datos Calculados
-			<hr />
-		</span>
 		<div class="row">
 			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Datos Calculados
+					<hr />
+				</span>
 				<div class="form-group">
-					<label for="approximate-time" class="form-text">Tiempo aproximado</label>
-					<input type="text" disabled id="approximate-time" name="approximate-time" class="form-control">
+					<label for="approximate-time" class="form-label">Tiempo aproximado</label>
+					<input type="text" disabled id="approximate-time" [(ngModel)]="approximate.time" name="approximate-time" class="form-control">
 				</div>
-			</div>
-			<div class="col-sm">
 				<div class="form-group">
-					<label for="approximate-distance" class="form-text">Distancia aproximada</label>
-					<input type="text" disabled id="approximate-distance" name="approximate-distance"
+					<label for="approximate-distance" class="form-label">Distancia aproximada</label>
+					<input type="text" disabled id="approximate-distance" [(ngModel)]="approximate.distance" name="approximate-distance"
 						class="form-control">
 				</div>
+				<div class="form-group">
+					<label for="approximate-cost" class="form-label">Costo aproximado</label>
+					<input type="text" disabled id="approximate-cost" [(ngModel)]="approximate.cost" name="approximate-cost" class="form-control">
+				</div>
 			</div>
 			<div class="col-sm">
-				<div class="form-group">
-					<label for="approximate-cost" class="form-text">Costo aproximado</label>
-					<input type="text" disabled id="approximate-cost" name="approximate-cost" class="form-control">
+				<span class="title-hr mt-3 mb-3">
+					<hr />Ruta a seguir
+					<hr />
+				</span>
+				<div class="container" [hidden]="routePoint.length == 0">
+					<div class="wrapper">
+						<ul class="sessions">
+							<ng-container *ngFor="let idpoint of routePoint; let i = index">
+								<li >
+									<div class="time">Sucursal {{idpoint?.name}}</div>
+									<p class="p-time"><span class="time-detail"><i class="fa fa-people-arrows"></i><b>{{idpoint.distance}}</b> km</span>
+										<span class="time-detail"><i class="fa fa-clock"></i><b style="color: black;">{{idpoint.time}}</b> hr</span>
+									</p>
+								</li>
+							</ng-container>
+							<ng-container *ngIf="routePoint.length>0">
+								<li>
+									<div class="time"><b>{{getBranchName(branchUser.id_branch)}}</b></div>
+									<p>Sucursal Origen</p>
+								</li>
+							</ng-container>
+						</ul>
+					</div>
 				</div>
 			</div>
 		</div>
-		<span class="title-hr mt-3 mb-3">
-			<hr />Ruta a seguir
-			<hr />
-		</span>
-		<div class="route" style="padding: 1em;">
-			<div class="branch">
-				<span class="branch-name passed">Sucursal 1</span>
-				<div class="branch-representation passed"><i class="fa fa-warehouse"></i></div>
-			</div>
-			<div class="connector">
-				<div class="line-connector passed"></div>
-				<span class="text-connector passed">4km <br> 4dias</span>
-				<div class="line-connector passed"></div>
-			</div>
-			<div class="branch">
-				<span class="branch-name active">Sucursal 2</span>
-				<div class="branch-representation active"><i class="fa fa-warehouse"></i></div>
-			</div>
-			<div class="connector">
-				<div class="line-connector"></div>
-				<span class="text-connector">4km <br> 4dias</span>
-				<div class="line-connector"></div>
-			</div>
-			<div class="branch">
-				<span class="branch-name">Sucursal 3</span>
-				<div class="branch-representation"><i class="fa fa-warehouse"></i></div>
-			</div>
-			<div class="connector">
-				<div class="line-connector"></div>
-				<span class="text-connector">4km <br> 4dias</span>
-				<div class="line-connector"></div>
-			</div>
-			<div class="branch">
-				<span class="branch-name">Sucursal 4</span>
-				<div class="branch-representation"><i class="fa fa-warehouse"></i></div>
-			</div>
-		</div>
 		<div class="row">
-			<button class="btn btn-primary mt-3">
+			<button class="btn btn-primary mt-3" (click)="saveShipment()">
 				<i class="fa fa-floppy-disk"></i> GUARDAR
 			</button>
 		</div>
 	</div>
 </div>
-<div class="card mt-3">
+<div class="card mt-3" [hidden]="qr==0">
 	<div class="card-header">
 		<h3>Detalle de encomienda</h3>
 	</div>
@@ -168,7 +161,7 @@
 		<div class="row">
 			<div class="col-sm">
 				<label for="code-encomienda" class="form-text">Código númerico de la encomienda</label>
-				<input type="number" disabled name="code-encomienda" id="code-encomienda" class="form-control">
+				<input type="number" disabled name="code-encomienda" [(ngModel)]="qr" id="code-encomienda" class="form-control">
 			</div>
 		</div>
 		<div class="form-group">

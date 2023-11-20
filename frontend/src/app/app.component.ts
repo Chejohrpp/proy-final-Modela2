@@ -18,7 +18,7 @@ declare let $: any;
 export class AppComponent implements OnInit, OnDestroy {
     location: any;
     routerSubscription: any;
-
+    hide = true;
     constructor(private router: Router) {
     }
 
@@ -32,6 +32,7 @@ export class AppComponent implements OnInit, OnDestroy {
             .subscribe(event => {
                 $.getScript('../assets/js/custom.js');
                 this.location = this.router.url;
+                this.hide = this.hideSidebar();
                 if (!(event instanceof NavigationEnd)) {
                     return;
                 }
@@ -41,5 +42,8 @@ export class AppComponent implements OnInit, OnDestroy {
 
     ngOnDestroy() {
         this.routerSubscription.unsubscribe();
+    }
+    hideSidebar(){
+        return this.location.includes('login') || this.location.includes('not-authorized') || this.location.includes('error') || this.location.includes('select-company');
     }
 }

@@ -145,6 +145,8 @@ import { CreateRoleComponent } from './components/pages/encomienda-gestion/creat
 import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/create-rol-branch/create-rol-branch.component';
 import { BudgetComponent } from './components/pages/encomienda-gestion/budget/budget.component';
 import { ChartComponent } from './components/pages/monthly-goals-encomienda/chart/chart.component';
+import { ConfigurationComponent } from './components/pages/configuration/configuration.component';
+import { ParamComponent } from './components/pages/configuration/param/param.component';
 
 @NgModule({
   declarations: [
@@ -287,6 +289,8 @@ import { ChartComponent } from './components/pages/monthly-goals-encomienda/char
     CreateRolBranchComponent,
     BudgetComponent,
     ChartComponent,
+    ConfigurationComponent,
+    ParamComponent,
   ],
   imports: [
     BrowserModule,

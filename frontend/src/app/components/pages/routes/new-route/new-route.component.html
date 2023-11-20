@@ -3,35 +3,155 @@
 </div>
 <div class="card mt-2">
 	<div class="card-header">
+		<h3>Rutas</h3>
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Crea
+					<hr />
+				</span>
+				<div class="input-group input-group-sm">
+					<label for="name" class="input-group-text">Nombre</label>
+					<input type="text" placeholder="Colocale un nombre a la ruta" class="form-control" [(ngModel)]="nameRoute" id="name" name="name">
+				</div>
+				<div class="input-group input-group-sm">
+					<label for="branch" class="input-group-text">Sucursal Origen</label>
+					<select name="branch" id="branch" [(ngModel)]="branchOrigin" class="form-select">
+						<option value="0">Selecciona una sucursal</option>
+						<option *ngFor="let branch of branches" value="{{branch.id_branch}}">{{branch.name}}</option>
+					</select>
+					<button class="btn btn-primary" [disabled]="branchOrigin==0" (click)="addOrigin()"><i class="fa fa-map-pin"></i></button>
+				</div>
+				<div class="container" [hidden]="branchOrigin==0">
+					<div class="wrapper">
+						<div class="input-group input-group-sm" *ngIf="filterPointsRoute.length != 0">
+							<label for="next" class="input-group-text">Siguiente Sucursal</label>
+							<select name="next" id="next" [(ngModel)]="nextBranch" class="form-select">
+								<option *ngFor="let point of filterPointsRoute" value="{{point.id_point_near}}">
+									{{point.name}}</option>
+							</select>
+							<button class="btn btn-primary" (click)="selectPoint()"><i class="fa fa-plus"></i></button>
+						</div>
+						<ul class="sessions">
+							<li *ngFor="let idpoint of idPoints; let i = index">
+								<div class="time">Sucursal {{idpoint.name}}</div>
+								<p class="p-time"><span class="time-detail"><i class="fa fa-people-arrows"></i><b>{{idpoint.distance}}</b> km</span>
+									<span class="time-detail"><i class="fa fa-clock"></i><b style="color: black;">{{idpoint.time}}</b> hr</span>
+								</p>
+							</li>
+							<li *ngIf="filterPointsRoute.length != 0 || idPoints.length>0">
+								<div class="time"><b>{{getBranchName(this.branchOrigin)}}</b></div>
+								<p>Sucursal Origen</p>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="row" *ngIf="idPoints.length!=0">
+					<div class="col-sm">
+						<button class="btn btn-primary" style="width: 100%;" (click)="saveRoute()" [disabled]="branchOrigin==0 || idPoints.length==0">
+							GUARDAR RUTA
+						</button>
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<span class="title-hr">
+					<hr />Busca
+					<hr />
+				</span>
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Nombre</th>
+								<th>Conexiones</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let route of routes">
+								<td>{{route.id_route}}</td>
+								<td>{{route.name}}</td>
+								<td>{{route.steps}}</td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="card mt-2">
+	<div class="card-header">
 		<h3>Agregar conexión<i data-bs-toggle="tooltip" data-bs-placement="top" data-bs-custom-class="custom-tooltip"
 				data-bs-title="Las conexiones sirven para crear las rutas" class="fa fa-circle-question"></i></h3>
 	</div>
 	<div class="card-body">
 		<div class="row">
 			<span>Crea una conexión seleccionando un punto en el mapa <img src="../../../../../assets/img/marker.png"
-					alt="" width="10px" height="auto"> y define los puntos a
-				los que puedes llegar desde dicho punto
+					alt="" width="10px" height="auto">, luego selecciona el destino (la distancia y el tiempo se calcula
+				automaticamente)
 				<img src="../../../../../assets/img/marker2.png" alt="" width="10px" height="auto"></span> <span
 				class="text-muted" style="font-size: 0.8em;">Si el punto ya existe, no se creará</span>
 		</div>
 		<div class="row">
-			<div id="map-container">
+			<div class="col-sm">
+				<div id="map-container">
 
+				</div>
 			</div>
-		</div>
+			<div class="col-sm">
+				<div class="table-responsive">
+					<table class="table table-striped">
+						<caption *ngIf="branchSelected">Se están mostrando las conexiones que tiene la sucursal
+							{{branchSelected.name}}
+							<a (click)="resetMap()" class="a-hover">
+								<i class="fa fa-broom"></i>
+							</a>
+						</caption>
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Punto A</th>
+								<th>Punto B</th>
+								<th>Distancia</th>
+								<th>Tiempo</th>
+								<th>Activo</th>
+							</tr>
+						</thead>
+						<tbody>
+							<tr *ngFor="let p of filterPoints">
+								<td>{{p.id_point_near}}</td>
+								<td>{{p.origin}}</td>
+								<td>{{p.destiny}}</td>
+								<td>{{p.distance}}</td>
+								<td>{{p.time}}</td>
+								<td><i [class.status-active]="p.active" class="fa fa-circle status"></i></td>
+							</tr>
+						</tbody>
+					</table>
+				</div>
+			</div>
+		</div><!-- 
 		<div class="input-group input-group-sm">
 			<button class="btn btn-success" (click)="sendPoints()" [disabled]="branchesNear.length == 0">GUARDAR
 				CONEXION</button>
-		</div>
+		</div> -->
 	</div>
 </div>
 <app-over [name]="'Ingresa la distancia y el tiempo aproximado'" [showContent]="show.route" (saveChanges)="sendRoute()">
 	<div class="input-group input-group-sm">
-		<label for="distance" class="input-group-text">Distancia <span class="text-muted">km</span></label>
-		<input type="number" [(ngModel)]="newPointNear.distance" name="distance" id="distance" class="form-control">
+		<label for="distance" class="input-group-text">Distancia <small style="font-size: 0.8em; padding-left: 0.5em;"
+				class="text-muted">(km)</small></label>
+		<input type="number" disabled [(ngModel)]="newPointNear.distance" name="distance" id="distance"
+			class="form-control">
 	</div>
 	<div class="input-group input-group-sm">
-		<label for="time" class="input-group-text">Tiempo <span class="text-muted">hr</span></label>
-		<input type="number" [(ngModel)]="newPointNear.time" name="time" id="time" class="form-control">
+		<label for="time" class="input-group-text">Tiempo <small style="font-size: 0.8em; padding-left: 0.5em;"
+				class="text-muted">(hr)</small></label>
+		<input type="number" placeholder="Ingresa las horas aproximadas" [(ngModel)]="newPointNear.time" name="time"
+			id="time" class="form-control">
 	</div>
 </app-over>
