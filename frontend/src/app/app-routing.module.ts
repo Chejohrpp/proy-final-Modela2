@@ -78,6 +78,7 @@ import { CreateHonorariumEncomiendaComponent } from './components/pages/encomien
 import { CreateRoleComponent } from './components/pages/encomienda-gestion/create-role/create-role.component';
 import { CreateRolBranchComponent } from './components/pages/encomienda-gestion/create-rol-branch/create-rol-branch.component';
 import { BudgetComponent } from './components/pages/encomienda-gestion/budget/budget.component';
+import { RoleGuardService } from './services/role-guard.service';
 
 const routes: Routes = [
   { path: '', redirectTo: 'branch/new', pathMatch: 'full' },
@@ -117,14 +118,14 @@ const routes: Routes = [
   {
     path: 'encomienda-gestion', component: EncomiendaGestionComponent,
     children: [
-      {path: 'create-employer', data: { breadcrumb: 'Crear empleado' }, component: CreateEmployeeEncomiendaComponent},
+      {path: 'create-employer', data: { breadcrumb: 'Crear empleado' }, component: CreateEmployeeEncomiendaComponent,canActivate: [RoleGuardService]},
       {path: 'report', data: { breadcrumb: 'Visualizar reportes' }, component: ReportsEncomiendaComponent},
       {path: 'honorarium', data: { breadcrumb: 'tabla de honorarios' }, component: HonorariumTableEncomiendaComponent},
-      {path: 'create-expense', data: { breadcrumb: 'crear un nuevo gasto' }, component: CreateExpenseEncomiendaComponent},
-      {path: 'create-honorarium', data: { breadcrumb: 'crear un nuevo honorario' }, component: CreateHonorariumEncomiendaComponent},
-      {path: 'create-rol', data: { breadcrumb: 'crear un nuevo rol' }, component: CreateRoleComponent},
-      {path: 'create-rol-branch', data: { breadcrumb: 'Asignar salario a una sucursal de rol' }, component: CreateRolBranchComponent},
-      {path: 'budget', data: { breadcrumb: 'El presupuesto' }, component: BudgetComponent},
+      {path: 'create-expense', data: { breadcrumb: 'crear un nuevo gasto' }, component: CreateExpenseEncomiendaComponent,canActivate: [RoleGuardService]},
+      {path: 'create-honorarium', data: { breadcrumb: 'crear un nuevo honorario' }, component: CreateHonorariumEncomiendaComponent,canActivate: [RoleGuardService]},
+      {path: 'create-rol', data: { breadcrumb: 'crear un nuevo rol' }, component: CreateRoleComponent,canActivate: [RoleGuardService]},
+      {path: 'create-rol-branch', data: { breadcrumb: 'Asignar salario a una sucursal de rol' }, component: CreateRolBranchComponent,canActivate: [RoleGuardService]},
+      {path: 'budget', data: { breadcrumb: 'El presupuesto' }, component: BudgetComponent,canActivate: [RoleGuardService]},
     ]
   },
   {path: 'branch-expenses', component: BranchExpensesEncomiendaComponent},
