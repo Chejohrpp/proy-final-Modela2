@@ -1,0 +1,127 @@
+<div class="breadcrumb-area">
+	<h1>Configuración de parametros</h1>
+</div>
+<div class="card">
+	<div class="card-header">
+		Lista y edita los parametros para el calculo del costo de la encomienda
+	</div>
+	<div class="card-body">
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="gasoline" class="form-label">Gasolina por kilometro</label>
+					<input type="number" [(ngModel)]="params[0].factor" name="gasoline" id="gasoline" class="form-control">
+					<div class="form-text text-muted">
+						Al momento de generar la ruta <em>aproximada</em> de la encomienda se multiplicará la distancia
+						resultante por este factor y se le sumará al costo total
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="employee" class="form-label">Costo de manipulación por empleado</label>
+					<input type="number" [(ngModel)]="params[1].factor" name="employee" id="employee" class="form-control">
+					<div class="form-text text-muted">
+						Al momento de generar la ruta <em>aproximada</em> de la encomienda se multiplicará este factor
+						por el numero total de los empleados que manipulen la encomienta y se le sumará al costo total
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="storage" class="form-label">Costo de almacenaje de encomienda por tiempo</label>
+					<input type="number" [(ngModel)]="params[2].factor" name="storage" id="storage" class="form-control">
+					<div class="form-text text-muted">
+						Al momento de generar la ruta <em>aproximada</em> de la encomienda se multiplicará el tiempo
+						resultante por este factor y se le sumará al costo total
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="resources" class="form-label">Costo por recursos informaticos</label>
+					<input type="number" [(ngModel)]="params[3].factor" name="resources" id="resources" class="form-control">
+					<div class="form-text text-muted">
+						Este factor se multiplica por el costo que se lleva y se le suma al costo total
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="shipments" class="form-label">Descuento por envios realizados</label>
+					<input type="number" [(ngModel)]="params[4].factor" name="shipments" id="shipments" class="form-control">
+					<div class="form-text text-muted">
+						Este factor se multiplica por todos los envios que tiene el cliente y se le resta al costo total
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="weight1" class="form-label">Peso maximo precio liviano</label>
+					<input type="number" [(ngModel)]="params[5].factor" name="weight1" id="weight1" class="form-control">
+					<div class="form-text text-muted">
+						Define el intervalo de peso en kg para poder cobrar el precio liviano para la encomienda
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="weight2" class="form-label">Peso maximo precio normal</label>
+					<input type="number" [(ngModel)]="params[6].factor" name="weight2" id="weight2" class="form-control">
+					<div class="form-text text-muted">
+						Define el intervalo de peso en kg para poder cobrar el precio normal para la encomienda
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="weight3" class="form-label">Peso maximo precio pesado</label>
+					<input type="number" [(ngModel)]="params[7].factor" name="weight3" id="weight3" class="form-control">
+					<div class="form-text text-muted">
+						Define el intervalo de peso en kg para poder cobrar el precio pesado para la encomienda
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="price1" class="form-label">Precio liviano</label>
+					<input type="number" [(ngModel)]="params[8].factor" name="price1" id="price1" class="form-control">
+					<div class="form-text text-muted">
+						Define el factor por el que se multiplicarán los kg para luego sumarselo al costo total
+					</div>
+				</div>
+			</div>
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="price2" class="form-label">Precio normal</label>
+					<input type="number" [(ngModel)]="params[9].factor" name="price2" id="price2" class="form-control">
+					<div class="form-text text-muted">
+						Define el factor por el que se multiplicarán los kg para luego sumarselo al costo total
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="row">
+			<div class="col-sm">
+				<div class="form-group">
+					<label for="price3" class="form-label">Precio pesado</label>
+					<input type="number" [(ngModel)]="params[10].factor" name="price3" id="price3" class="form-control">
+					<div class="form-text text-muted">
+						Define el factor por el que se multiplicarán los kg para luego sumarselo al costo total
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="container-button">
+			<button class="btn btn-primary" (click)="updateParams()"><i class="fa fa-floppy-disk"></i>GUARDAR CAMBIOS</button>
+		</div>
+	</div>
+</div>

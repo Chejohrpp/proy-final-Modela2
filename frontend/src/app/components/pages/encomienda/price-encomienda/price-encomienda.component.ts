@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { ToastrService } from 'ngx-toastr';
 import { dijkstra } from 'src/app/common/dijkstra';
+import { Param } from 'src/app/models/param.model';
+import { ParamService } from 'src/app/services/param.service';
 
 @Component({
   selector: 'app-price-encomienda',
@@ -9,8 +12,12 @@ import { dijkstra } from 'src/app/common/dijkstra';
 export class PriceEncomiendaComponent implements OnInit {
 
   resultado: any;
+  prices: Param[]= [];
 
-  constructor() {
+  constructor(
+    private paramService:ParamService,
+    private toastService:ToastrService
+  ) {
 
   }
 
@@ -34,5 +41,13 @@ export class PriceEncomiendaComponent implements OnInit {
     if (shortestPath.length > 0) {
       this.resultado = `La ruta más corta desde ${startVertex} a ${targetVertex} es: ${shortestPath.join(' -> ')}`;
     }
+    this.paramService.getDataPrices().subscribe({
+      next:(response:Param[])=>{
+        this.prices = response;
+      },
+      error: (error:any)=>{
+        this.toastService.error(error.error.error);
+      }
+    })
   }
 }

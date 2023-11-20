@@ -14,7 +14,7 @@ export class PointNear {
 	time: number;
 
 	constructor(){
-		this.active = false;
+		this.active = true;
 	}
 }
 

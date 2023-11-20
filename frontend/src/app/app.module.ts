@@ -140,6 +140,8 @@ import { OverComponent } from './modals/over/over.component';
 import { ToastrModule } from 'ngx-toastr';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
+import { ConfigurationComponent } from './components/pages/configuration/configuration.component';
+import { ParamComponent } from './components/pages/configuration/param/param.component';
 
 @NgModule({
   declarations: [
@@ -277,6 +279,8 @@ import { NewRouteComponent } from './components/pages/routes/new-route/new-route
     TransportComponent,
     OverComponent,
     NewRouteComponent,
+    ConfigurationComponent,
+    ParamComponent,
   ],
   imports: [
     BrowserModule,

@@ -71,9 +71,12 @@ import { BranchComponent } from './components/pages/branch/branch/branch.compone
 import { TransportComponent } from './components/pages/routes/transport/transport.component';
 import { RoutesComponent } from './components/pages/routes/routes.component';
 import { NewRouteComponent } from './components/pages/routes/new-route/new-route.component';
+import { authenticationGuard } from './security/auth.guard';
+import { ConfigurationComponent } from './components/pages/configuration/configuration.component';
+import { ParamComponent } from './components/pages/configuration/param/param.component';
 
 const routes: Routes = [
-  {path: '', component: AnalyticsComponent},
+  { path: '', redirectTo: 'branch/new', pathMatch: 'full' },
   {
     path: 'dashboard', component: DashboardComponent,
     children: [
@@ -82,17 +85,25 @@ const routes: Routes = [
     ]
   },
   {path: 'encomienda', component: EncomiendaComponent,
+  canActivate: [authenticationGuard],
   children: [
     {path: 'status', data: { breadcrumb: 'Estado Encomienda' }, component: StatusEncomiendaComponent},
     {path: 'send', data: { breadcrumb: 'Enviar Encomienda' }, component: SendEncomiendaComponent},
     {path: 'price', data: { breadcrumb: 'Tarifario' }, component: PriceEncomiendaComponent}
   ]},
   {path: 'routes', component: RoutesComponent,
+  canActivate: [authenticationGuard],
   children: [
     {path: 'transport', data: { breadcrumb: 'Gestión de Transportes' }, component: TransportComponent},
     {path: 'new', data: { breadcrumb: 'Agregar nueva ruta' }, component: NewRouteComponent},
   ]},
+  {path: 'configuration', component: ConfigurationComponent,
+  canActivate: [authenticationGuard],
+  children: [
+    {path: 'params', data: { breadcrumb: 'Configuración de parametros' }, component: ParamComponent}
+  ]},
   {path: 'branch', component: BranchComponent,
+  canActivate: [authenticationGuard],
   children: [
     {path: 'new', data: { breadcrumb: 'Crear Sucursal' }, component: NewBranchComponent}
   ]},
@@ -148,6 +159,7 @@ const routes: Routes = [
   {path: 'timeline', component: TimelineComponent},
   {path: 'faq', component: FaqComponent},
   {path: 'invoice', component: InvoiceComponent},
+  {path: 'login', component: LoginWithImageComponent},
   {path: 'blank-page', component: BlankPageComponent},
   {
     path: 'authentication', component: AuthenticationComponent,
